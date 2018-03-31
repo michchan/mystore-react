@@ -117,5 +117,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Custome
+# Custom
 .sample_api_response
+
+## Ignore dev config ##
+dev_config.json
