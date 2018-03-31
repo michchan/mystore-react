@@ -120,5 +120,8 @@ yarn-error.log*
 # Custom
 .sample_api_response
 
-## Ignore dev config ##
+# Ignore dotenv 
+.env
+
+# Ignore dev config
 dev_config.json
