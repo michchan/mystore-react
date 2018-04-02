@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import {} from '../../screens';
+import {} from '../../scenes';
 import {} from '../../components';
 import {} from '../../actions';
 
