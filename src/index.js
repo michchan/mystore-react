@@ -6,10 +6,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-import { AppErrorBoundary } from './components/state/AppErrorBoundary';
+import { AppErrorBoundary } from './components/AppErrorBoundary';
 import {
     HomeScene,
-} from './scenes';
+} from './containers';
 import { IS_DEV, disableLogging } from './lib';
 
 if (!IS_DEV) {
