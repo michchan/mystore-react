@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
+import { ROOT_ROUTE } from './constants/routes';
 import { AppErrorBoundary } from './components/AppErrorBoundary';
 import {
     HomeScene,
@@ -13,7 +14,6 @@ import {
 import { IS_DEV, disableLogging } from './lib';
 
 if (!IS_DEV) {
-    console.disableYellowBox = true;
     disableLogging();
 }
 
@@ -25,7 +25,7 @@ ReactDOM.render((
         <Provider store={store}>
             <BrowserRouter>
                 <Switch>
-                    <Route path='/' component={HomeScene}/>
+                    <Route path={ROOT_ROUTE} component={HomeScene}/>
                 </Switch>
             </BrowserRouter>
         </Provider>
