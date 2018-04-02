@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 import { HomeScene as RenderedScene } from '../scenes';
 import {} from '../components';
-import {} from '../actions';
+import { startFetchingTopFreeAppsFlow } from '../actions';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -18,7 +18,7 @@ class HomeContainer extends React.Component {
 
     componentWillMount() {
         // fetch action started
-        
+        this.props.fetchTopFreeApps(100);
     }
 
     render() {
@@ -30,7 +30,9 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({ });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({ });
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    fetchTopFreeApps: (limit) => dispatch(startFetchingTopFreeAppsFlow(limit)),
+});
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );
 
