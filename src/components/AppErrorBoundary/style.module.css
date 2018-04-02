@@ -13,5 +13,8 @@
   color: #fff;
   text-align: center; }
 
-.error-title {
+.errorTitle {
+  color: #fff; }
+
+.errorInfo {
   color: #fff; }

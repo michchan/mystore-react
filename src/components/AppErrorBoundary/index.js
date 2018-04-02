@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import styles from './style.module.css';
 
 export class AppErrorBoundary extends Component {
     static defaultProps = {}
@@ -23,12 +23,12 @@ export class AppErrorBoundary extends Component {
         if (this.state.hasError) {
             // You can render any custom fallback UI
             return (
-                <div className={'container'}>
-                    <p className={'title'}>{
+                <div className={styles.container}>
+                    <p className={styles.title}>{
                         'Opps! An error occured.'
                     }</p>
-                    <p className={'error-title'}>{ `Error: ${this.state.error}` }</p>
-                    <p className={'error-info'}>{this.state.info}</p>
+                    <p className={styles.errorTitle}>{ `Error: ${this.state.error}` }</p>
+                    <p className={styles.errorInfo}>{this.state.info}</p>
                 </div>
             );
         }

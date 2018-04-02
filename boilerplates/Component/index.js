@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import styles from './style.module.css';
 
 export const SomeComponent = (props = {}) => {
     return (
-        <div className={'container'}>
+        <div className={styles.container}>
             <p>SomeComponent</p>
         </div>
     );

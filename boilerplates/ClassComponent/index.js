@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import styles from './style.module.css';
 
 export class SomeComponent extends Component {
     static defaultProps = {}
@@ -8,7 +8,7 @@ export class SomeComponent extends Component {
 
     render() {
         return (
-            <div className={'container'}>
+            <div className={styles.container}>
                 <p>SomeComponent</p>
             </div>
         );
