@@ -122,6 +122,3 @@ yarn-error.log*
 
 # Ignore dotenv 
 .env
-
-# Ignore dev config
-dev_config.json
