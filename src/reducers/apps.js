@@ -14,22 +14,10 @@ const INITIAL_STATE = {
 
 export const apps = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case FETCHING_APPS_LOOKUP_SUCCESS: {
-            let newEntities = { ...action.entities, ...state.entities };
-
-            _.forEach(newEntities, (entity, appId) => {
-                _.forEach(action.entities, (newEntity, _appId) => {
-                    if (+_appId === +appId) {
-                        newEntities[appId] = { ...entity, ...newEntity };
-                    }
-                });
-            });
-
-            return {
-                ...state,
-                lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
-                entities: newEntities,
-            };
+        case FETCHING_APPS_LOOKUP_SUCCESS: return {
+            ...state,
+            lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
+            entities: newEntitiesReducer(state, action),
         }
         case INIT_FETCH_SUCCESS: return {
             ...state,
@@ -52,7 +40,21 @@ export default apps;
 const fetchTopAppsReducer = (state, action) => {
     return { 
         ...state, 
-        entities: { ...state.entities, ...action.entities },
+        entities: newEntitiesReducer(state, action),
         lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
     };
+}
+
+const newEntitiesReducer = (state, action) => {
+    let newEntities = { ...action.entities, ...state.entities };
+
+    _.forEach(newEntities, (entity, appId) => {
+        _.forEach(action.entities, (newEntity, _appId) => {
+            if (+_appId === +appId) {
+                newEntities[appId] = { ...entity, ...newEntity };
+            }
+        });
+    });
+    
+    return newEntities;
 }

@@ -132,7 +132,6 @@ export const fetchingAppsLookupFlow = function* fetchingAppsLookupFlow(action) {
     // Reduce Ids from offset to shorten request time
     const _ids = [ ...ids ];
     const reducedIds = _ids.splice(offset);
-    console.log('#REDUCE', reducedIds.length)
     
     yield call(handleApiCall, {
         [configs.startedType]: FETCHING_APPS_LOOKUP_STARTED,
