@@ -44,49 +44,46 @@ const _rowRenderer = ({
     );
 }
 
-export class AppList extends Component {
-    static defaultProps = {
-        data: [],
-    };
-    static propTypes = {
-        data: PropTypes.arrayOf(PropTypes.object),
-        loadMoreRows: PropTypes.func.isRequired,
-        appLookUpLoading: PropTypes.bool.isRequired,
-        loadingMore: PropTypes.bool.isRequired,
-    };
-
-    render() {
-        const props = this.props;
-        const { 
-            data, 
-            loadMoreRows,
-            loadingMore,
-        } = props;
-        
-        const rowCount = loadingMore? data.length + 1 : data.length;
+export const AppList = (props = {}) => {
+    const { 
+        data, 
+        loadMoreRows,
+        loadingMore,
+    } = props;
     
-        return (
-            <AutoSizer>
-                {({ width, height }) => (
-                    <List
-                        width={width}
-                        height={height}
-                        rowCount={rowCount}
-                        rowHeight={120}
-                        rowRenderer={(row) => _rowRenderer(row, props)}
-                        onScroll={this._handleOnScroll}
-                    />
-                )}
-            </AutoSizer>
-        );
-    }
+    const rowCount = loadingMore? data.length + 1 : data.length;
 
+    return (
+        <AutoSizer>
+            {({ width, height }) => (
+                <List
+                    width={width}
+                    height={height}
+                    rowCount={rowCount}
+                    rowHeight={120}
+                    rowRenderer={(row) => _rowRenderer(row, props)}
+                    onScroll={(data) => _handleOnScroll(data, props)}
+                />
+            )}
+        </AutoSizer>
+    );
+};
+
+const _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }, props) => {
+    const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight && scrollTop !== 0;
     // Infinite scroll
-    _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
-        const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight && scrollTop !== 0;
-        
-        scrolledToBottom && this.props.loadMoreRows();
-    }
+    scrolledToBottom && props.loadMoreRows();
+}
+
+AppList.defaultProps = {
+    data: [],
+};
+
+AppList.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+    loadMoreRows: PropTypes.func.isRequired,
+    appLookUpLoading: PropTypes.bool.isRequired,
+    loadingMore: PropTypes.bool.isRequired,
 };
 
 export default AppList;
