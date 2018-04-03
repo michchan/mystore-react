@@ -22,6 +22,7 @@ export const handleApiCallConfigKeys = {
     extraSuccessPayload: 'extraSuccessPayload',
     extraErrorPayload: 'extraErrorPayload',
     callbackOnSuccess: 'callbackOnSuccess',
+    callbackOnError: 'callbackOnError',
     processData: 'processData',
     bindProcessedDataToAction: 'bindProcessedDataToAction',
     requestTimeout: 'requestTimeout',
@@ -51,6 +52,9 @@ export const handleApiCallConfigKeys = {
         key: data,
 *     }
       callbackOnSuccess: {
+        key: handler,
+      },
+      callbackOnError: {
         key: handler,
       },
       processData: (data) => data,
@@ -94,6 +98,7 @@ export const handleApiCall = function * handleApiCall(config) {
     const _callFunction = callFunction || (function*(){ console.log('callFunction is not passed'); return; });
     const _callParams = callParams || [];
     const _callbackOnSuccess = callbackOnSuccess || {};
+    const _callbackOnError = callbackOnError || {};
     const _processData = processData || (function*(data){ return data; });
     // Multiply the timeout tolerance if warming up is enabled this is the first time the request get called.
     const isNotWarmedUp = !warmedUpList.find(t => t === startedType);
@@ -204,6 +209,13 @@ export const handleApiCall = function * handleApiCall(config) {
 
     } catch (error) {
         yield put({ type: errorType, error, ..._extraErrorPayload, triggerUi });
+
+        // Trigger passed callbacks on error
+        for (const key in _callbackOnError) {
+            if (typeof _callbackOnError[key] === 'function') {
+                action[key] = yield call(_callbackOnError[key]);
+            }
+        }
     }
 }
 
