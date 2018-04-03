@@ -99,6 +99,7 @@ export const handleApiCall = function * handleApiCall(config) {
     const isNotWarmedUp = !warmedUpList.find(t => t === startedType);
     const _requestTimeout = (warmUpEnabled && isNotWarmedUp) ? 
         (requestTimeout * DEFAULT_WARM_UP_TIMEOUT_SCALING_FACTOR) : requestTimeout || 7000;
+    const _unsuccessError = unsuccessError || 'Fetch Data Unsuccessful';
     
     /* Start flow */
     try {
@@ -106,9 +107,30 @@ export const handleApiCall = function * handleApiCall(config) {
         
         const ts = (performance && performance.now()) || 0; // time start, for performance evaluation
 
+        // Get API caller, see if single caller or multiple callers
+        let apiCall;
+
+        if (typeof _callFunction === 'function') apiCall = call(_callFunction, ..._callParams);
+
+        if (typeof _callFunction === 'object') {
+            const allEffectsObj = {};
+
+            _.forEach(_callFunction, (func, callerKey) => {
+                let eachCallParams = [];
+
+                _.isObject(_callParams) && _.forEach(_callParams, (params, paramKey) => {
+                    if (paramKey === callerKey) eachCallParams = params;
+                });
+
+                allEffectsObj[callerKey] = call(func, ...eachCallParams);
+            });
+
+            apiCall = all(allEffectsObj);
+        }
+
         // Start race
         const winner = yield race({
-            [keys.API_CALL]: call(_callFunction, ..._callParams),
+            [keys.API_CALL]: apiCall, //Support "all" effect call
             [keys.TIMEOUT]: call(delay, _requestTimeout),
             ..._extraRaces,
         });
@@ -122,7 +144,7 @@ export const handleApiCall = function * handleApiCall(config) {
             Is timeout: ${!!winner[keys.TIMEOUT]}
         `);
 
-        if (!winner[keys.REFRESH_TOKEN_REQUEST] && isNotWarmedUp) 
+        if (isNotWarmedUp) 
             warmedUpList.push(startedType); // indicate this request has been warmed up
 
         for (const wKey in winner) {
@@ -143,24 +165,26 @@ export const handleApiCall = function * handleApiCall(config) {
                         }
                     }
 
+                    const apiData = typeof _callFunction === 'object' ? _.mapValues(winner[wKey], 'data') : winner[wKey].data;
+
                     // If the request does return data (response)
-                    if (winner[wKey].data) {
+                    if (apiData) {
                         // Bind data to action.data or bind to action directly
                         if (bindProcessedDataToAction) {
-                            const data = yield call(_processData, winner[wKey].data) || winner[wKey].data;
+                            const data = yield call(_processData, apiData) || apiData;
                             
                             action = {
                                 ...action,
                                 ...data
                             };
                         } else {
-                            action.data = yield call(_processData, winner[wKey].data) || winner[wKey].data;
+                            action.data = yield call(_processData, apiData) || apiData;
                         }
 
                         yield put(action);
 
                     } else {
-                        throw new Error(unsuccessError);
+                        throw new Error(_unsuccessError);
                     }
                     return;
                 }
