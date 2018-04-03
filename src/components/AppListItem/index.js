@@ -10,16 +10,25 @@ export const AppListItem = (props = {}) => {
     } = props;
 
     const rowNumber = index + 1;
+    const isEvenRow = (index + 1) % 2 === 0;
+
     const appName = data[fields.NAME];
     const appCatName = data[fields.CATEGORY_LABEL];
     const appIconSrc = data[fields.ICON_3X];
     const appIconHeight = data[fields.ICON_3X_HEIGHT];
+    const appIconBorderRadius = isEvenRow ? appIconHeight / 2 : appIconHeight / 4;
     
     return (
         <div {...props} className={styles.container}>
             <div className={styles.innerContainer}>
                 <div className={styles.rowNumber}>{ rowNumber }</div>
-                <img src={appIconSrc} alt="icon" className={styles.appIcon}/>
+
+                <img src={appIconSrc} alt="icon" className={styles.appIcon} style={{
+                    width: appIconHeight,
+                    height: appIconHeight,
+                    borderRadius: appIconBorderRadius,
+                }}/>
+
                 <div className={styles.colRight}>
                     <div className={styles.appName}>{ appName }</div>
                     <div className={styles.appCatName}>{ appCatName }</div>
