@@ -166,3 +166,35 @@ export const getAPICaller = (config) => {
         });
     }
 }
+
+export const mapApiFields = (data, mapConfig = []) => {
+    if (!_.isArray(data) && !_.isObject(data)) return;
+    const _data = _.isArray(data)? data : [data]; //convert all to array
+
+    const parsedData = _data.map(item => {
+        const parsedItem = {};
+
+        mapConfig.map(keyMap => {
+            // If the 'in' key is flat
+            if (_.isString(keyMap.in) || !isNaN(keyMap.in)) {
+                parsedItem[keyMap.out] = keyMap.type === 'number'? +item[keyMap.in] : item[keyMap.in];
+                return;
+            }
+            // If the 'in' key is nested
+            if (_.isArray(keyMap.in)) {
+                let itemBuffer = item;
+
+                keyMap.in.map(inKey => {
+                    itemBuffer = itemBuffer[inKey];
+                });
+                
+                parsedItem[keyMap.out] = keyMap.type === 'number'? +itemBuffer : itemBuffer;
+                return;
+            }
+        });
+        
+        return parsedItem;
+    });
+
+    return _.isArray(data)? parsedData : parsedData[0]; // return the passed format
+}
