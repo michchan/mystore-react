@@ -40,7 +40,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     initFetch: () => dispatch({ type: START_INIT_FETCH_FLOW }),
-    fetchTopFreeApps: (limit) => dispatch(startFetchingTopFreeAppsFlow(limit)),
+    fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
 });
 

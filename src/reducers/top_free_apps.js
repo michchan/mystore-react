@@ -7,6 +7,7 @@ import { fetchTopAppsResultReducer } from './helper';
 const INITIAL_STATE = {
     result: [],
     meta: {},
+    offset: 0,
     lastFetchMoment: null,
 };
 
@@ -17,6 +18,7 @@ export const topFreeApps = (state = INITIAL_STATE, action) => {
             result: action.topFreeApps.result || state.result,
             meta: action.topFreeApps.meta || state.meta,
             lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
+            offset: state.offset + action.topFreeAppsLimit,
         }
         case FETCHING_TOP_FREE_APPS_SUCCESS: return fetchTopAppsResultReducer(state, action);
         default:

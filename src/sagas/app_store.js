@@ -46,7 +46,7 @@ export const initFetchFlow = function * initFetchFlow(action) {
             const topGrossingApps = yield call(processAppStoreData, data.topGrossingApps);
 
             const appIds = _.union(topFreeApps.result, topGrossingApps.result);
-            yield put(startFetchingAppsLookupFlow(appIds));
+            yield put(startFetchingAppsLookupFlow(appIds, 0));
 
             return {
                 topFreeApps,
@@ -55,6 +55,10 @@ export const initFetchFlow = function * initFetchFlow(action) {
         },
         [configs.bindProcessedDataToAction]: true,
         [configs.requestTimeout]: 5000,
+        [configs.extraSuccessPayload]: {
+            topFreeAppsLimit: 10,
+            topGrossingAppsLimit: 10,
+        },
     });
 }
 
@@ -63,6 +67,8 @@ export const initFetchFlow = function * initFetchFlow(action) {
  */
 export const fetchingTopFreeAppsFlow = function* fetchingTopFreeAppsFlow(action) {
     const { limit } = action;
+    const state = yield select();
+    const { offset } = state.topFreeApps;
 
     yield call(handleApiCall, {
         [configs.startedType]: FETCHING_TOP_FREE_APPS_STARTED,
@@ -70,11 +76,18 @@ export const fetchingTopFreeAppsFlow = function* fetchingTopFreeAppsFlow(action)
         [configs.errorType]: FETCHING_TOP_FREE_APPS_ERROR,
         [configs.callFunction]: getAPICaller(getTopFreeAppsAPI),
         [configs.callParams]: [{ 
-            [topFreeAppsParams.LIMIT]: limit,
+            [topFreeAppsParams.LIMIT]: offset + limit,
         }],
-        [configs.processData]: processAppStoreData,
+        [configs.processData]: function * (data) { 
+            const processedData = yield call(processAppStoreData, data, offset);
+            yield put(startFetchingAppsLookupFlow(processedData.result, offset));
+            return processedData;
+        },
         [configs.bindProcessedDataToAction]: true,
         [configs.requestTimeout]: 5000,
+        [configs.extraSuccessPayload]: {
+            limit,
+        },
     });
 }
 
@@ -83,6 +96,8 @@ export const fetchingTopFreeAppsFlow = function* fetchingTopFreeAppsFlow(action)
  */
 export const fetchingTopGrossingAppsFlow = function* fetchingTopGrossingAppsFlow(action) {
     const { limit } = action;
+    const state = yield select();
+    const { offset } = state.topGrossingApps;
 
     yield call(handleApiCall, {
         [configs.startedType]: FETCHING_TOP_GROSSING_APPS_STARTED,
@@ -90,11 +105,18 @@ export const fetchingTopGrossingAppsFlow = function* fetchingTopGrossingAppsFlow
         [configs.errorType]: FETCHING_TOP_GROSSING_APPS_ERROR,
         [configs.callFunction]: getAPICaller(getTopGrossingAppsAPI),
         [configs.callParams]: [{ 
-            [topGrossingAppsParams.LIMIT]: limit,
+            [topGrossingAppsParams.LIMIT]: offset + limit,
         }],
-        [configs.processData]: processAppStoreData,
+        [configs.processData]: function * (data) { 
+            const processedData = yield call(processAppStoreData, data, offset);
+            yield put(startFetchingAppsLookupFlow(processedData.result, offset));
+            return processedData;
+        },
         [configs.bindProcessedDataToAction]: true,
         [configs.requestTimeout]: 5000,
+        [configs.extraSuccessPayload]: {
+            limit,
+        },
     });
 }
 
@@ -102,10 +124,15 @@ export const fetchingTopGrossingAppsFlow = function* fetchingTopGrossingAppsFlow
  * Fetch Apps (given mutiple app ids) Lookup Saga
  */
 export const fetchingAppsLookupFlow = function* fetchingAppsLookupFlow(action) {
-    const { ids } = action;
+    const { ids, offset } = action;
 
     if (!_.isArray(ids)) return;
     if (ids.length === 0) return;
+
+    // Reduce Ids from offset to shorten request time
+    const _ids = [ ...ids ];
+    const reducedIds = _ids.splice(offset);
+    console.log('#REDUCE', reducedIds.length)
     
     yield call(handleApiCall, {
         [configs.startedType]: FETCHING_APPS_LOOKUP_STARTED,
@@ -113,7 +140,7 @@ export const fetchingAppsLookupFlow = function* fetchingAppsLookupFlow(action) {
         [configs.errorType]: FETCHING_APPS_LOOKUP_ERROR,
         [configs.callFunction]: getAPICaller(getAppLookupAPI),
         [configs.callParams]: [{
-            [appLookUpQuery.ID]: ids.toString(),
+            [appLookUpQuery.ID]: reducedIds.toString(),
         }], 
         [configs.processData]: function * (data) {
             const parsedData = mapApiFields(data.results, appLookUpMap);
@@ -129,13 +156,11 @@ export const fetchingAppsLookupFlow = function* fetchingAppsLookupFlow(action) {
     });
 }
 
-const processAppStoreData = function * (data) {
+const processAppStoreData = function * processAppStoreData(data, offset) {
     const { entry, ...meta } = data.feed;
     const parsedData = mapApiFields(entry, appStoreEntryMap);
     const parsedMeta = mapApiFields(meta, appStoreMetaMap);
     const normalizedData = normalize(parsedData, appStoreEntriesNormalizedSchema);
-
-    yield put(startFetchingAppsLookupFlow(normalizedData.result));
 
     return {
         meta: parsedMeta,

@@ -7,11 +7,13 @@ export const HomeScene = (props = {}) => {
     const {
         topFreeApps,
         topGrossingApps,
+        fetchTopFreeApps,
+        fetchTopGrossingApps,
     } = props;
 
     return (
         <div className={styles.container}>
-            <AppList data={topFreeApps}/>
+            <AppList data={topFreeApps} loadMoreRows={fetchTopFreeApps}/>
         </div>
     );
 };
@@ -23,6 +25,8 @@ HomeScene.defaultProps = {
 HomeScene.propTypes = {
     topFreeApps: PropTypes.arrayOf(PropTypes.object),
     topGrossingApps: PropTypes.arrayOf(PropTypes.object),
+    fetchTopFreeApps: PropTypes.func.isRequired,
+    fetchTopGrossingApps: PropTypes.func.isRequired,
 };
 
 export default HomeScene;

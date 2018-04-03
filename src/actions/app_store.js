@@ -24,9 +24,9 @@ export const FETCHING_APPS_LOOKUP_ERROR = pfx + 'FETCHING_APPS_LOOKUP_ERROR';
 
 /* ========= Action Creators ========= */
 
-export const startFetchingTopFreeAppsFlow = (limit = 100) => ({
+export const startFetchingTopFreeAppsFlow = (limit = 10) => ({
     type: START_FETCHING_TOP_FREE_APPS_FLOW,
-    limit
+    limit,
 });
 
 export const startFetchingTopGrossingAppsFlow = (limit = 10) => ({
@@ -34,9 +34,10 @@ export const startFetchingTopGrossingAppsFlow = (limit = 10) => ({
     limit
 });
 
-export const startFetchingAppsLookupFlow = (ids = []) => ({
+export const startFetchingAppsLookupFlow = (ids = [], offset = 0) => ({
     type: START_FETCHING_APPS_LOOKUP_FLOW,
-    ids
+    ids,
+    offset,
 });
 
 export default {

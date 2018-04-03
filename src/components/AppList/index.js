@@ -4,6 +4,10 @@ import styles from './style.module.css';
 import { AutoSizer, List, InfiniteLoader } from 'react-virtualized';
 import { AppListItem } from '../AppListItem';
 
+const _isRowLoaded = ({ index }, data) => {
+    return !!data[index];
+}
+
 const _rowRenderer = ({
     index, 
     key, 
@@ -24,29 +28,44 @@ const _rowRenderer = ({
     );
 }
 
-export const AppList = (props = {}) => {
-    const { data } = props;
+export class AppList extends Component {
+    static defaultProps = {
+        data: [],
+    };
+    static propTypes = {
+        data: PropTypes.arrayOf(PropTypes.object),
+        loadMoreRows: PropTypes.func.isRequired,
+    };
 
-    return (
-        <AutoSizer>
-            {({ width, height }) => (
-                <List
-                    width={width}
-                    height={height}
-                    rowCount={data.length}
-                    rowHeight={120}
-                    rowRenderer={(row) => _rowRenderer(row, props)}
-                />
-            )}
-        </AutoSizer>
-    );
-};
+    render() {
+        const props = this.props;
+        const { 
+            data, 
+            loadMoreRows 
+        } = props;
+    
+        return (
+            <AutoSizer>
+                {({ width, height }) => (
+                    <List
+                        width={width}
+                        height={height}
+                        rowCount={data.length}
+                        rowHeight={120}
+                        rowRenderer={(row) => _rowRenderer(row, props)}
+                        onScroll={this._handleOnScroll}
+                    />
+                )}
+            </AutoSizer>
+        );
+    }
 
-AppList.defaultProps = {
-    data: [],
-};
-AppList.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object),
+    // Infinite scroll
+    _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+        const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight && scrollTop !== 0;
+        
+        scrolledToBottom && this.props.loadMoreRows();
+    }
 };
 
 export default AppList;
