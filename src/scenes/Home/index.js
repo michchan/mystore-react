@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.css';
 import { AppList } from '../../components';
+import { assetImages } from '../../assets';
 
 export const HomeScene = (props = {}) => {
     const {
@@ -9,7 +10,15 @@ export const HomeScene = (props = {}) => {
         topGrossingApps,
         fetchTopFreeApps,
         fetchTopGrossingApps,
+        appLoading,
     } = props;
+
+    if (appLoading)
+        return (
+            <div className={styles.loadingContainer}>
+                <img src={assetImages.loadingSpinner} alt='loading' className={styles.loadingSpinner}/>
+            </div>
+        );
 
     return (
         <div className={styles.container}>
@@ -27,6 +36,7 @@ HomeScene.propTypes = {
     topGrossingApps: PropTypes.arrayOf(PropTypes.object),
     fetchTopFreeApps: PropTypes.func.isRequired,
     fetchTopGrossingApps: PropTypes.func.isRequired,
+    appLoading: PropTypes.bool.isRequired,
 };
 
 export default HomeScene;

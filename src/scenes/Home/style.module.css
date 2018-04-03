@@ -1,4 +1,4 @@
-.container {
+.container, .loadingContainer {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -6,3 +6,10 @@
   justify-content: flex-start;
   background-color: #fff;
   height: 100vh; }
+
+.loadingContainer {
+  align-items: center;
+  justify-content: center; }
+
+.loadingSpinner {
+  width: 15vw; }

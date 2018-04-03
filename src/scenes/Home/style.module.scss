@@ -9,3 +9,14 @@
     background-color: #fff;
     height: 100vh;
 }
+
+.loadingContainer {
+    @extend .container;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingSpinner {
+    width: 15vw;
+}
