@@ -17,6 +17,11 @@ export const FETCHING_TOP_GROSSING_APPS_STARTED = pfx + 'FETCHING_TOP_GROSSING_A
 export const FETCHING_TOP_GROSSING_APPS_SUCCESS = pfx + 'FETCHING_TOP_GROSSING_APPS_SUCCESS';
 export const FETCHING_TOP_GROSSING_APPS_ERROR = pfx + 'FETCHING_TOP_GROSSING_APPS_ERROR';
 
+export const START_FETCHING_APPS_LOOKUP_FLOW = pfx + 'START_FETCHING_APPS_LOOKUP_FLOW';
+export const FETCHING_APPS_LOOKUP_STARTED = pfx + 'FETCHING_APPS_LOOKUP_STARTED';
+export const FETCHING_APPS_LOOKUP_SUCCESS = pfx + 'FETCHING_APPS_LOOKUP_SUCCESS';
+export const FETCHING_APPS_LOOKUP_ERROR = pfx + 'FETCHING_APPS_LOOKUP_ERROR';
+
 /* ========= Action Creators ========= */
 
 export const startFetchingTopFreeAppsFlow = (limit = 100) => ({
@@ -27,6 +32,11 @@ export const startFetchingTopFreeAppsFlow = (limit = 100) => ({
 export const startFetchingTopGrossingAppsFlow = (limit = 10) => ({
     type: START_FETCHING_TOP_GROSSING_APPS_FLOW,
     limit
+});
+
+export const startFetchingAppsLookupFlow = (ids = []) => ({
+    type: START_FETCHING_APPS_LOOKUP_FLOW,
+    ids
 });
 
 export default {
@@ -45,6 +55,12 @@ export default {
     FETCHING_TOP_GROSSING_APPS_SUCCESS,
     FETCHING_TOP_GROSSING_APPS_ERROR,
 
+    START_FETCHING_APPS_LOOKUP_FLOW,
+    FETCHING_APPS_LOOKUP_STARTED,
+    FETCHING_APPS_LOOKUP_SUCCESS,
+    FETCHING_APPS_LOOKUP_ERROR,
+
     startFetchingTopFreeAppsFlow,
     startFetchingTopGrossingAppsFlow,
+    startFetchingAppsLookupFlow,
 };

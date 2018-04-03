@@ -171,13 +171,28 @@ export const mapApiFields = (data, mapConfig = []) => {
     if (!_.isArray(data) && !_.isObject(data)) return;
     const _data = _.isArray(data)? data : [data]; //convert all to array
 
+    const convertValueType = (_item, _keyMap) => {
+        if (_.isArray(_item)) {
+            return _item.map(_subItem => _keyMap.type === 'number'? +_subItem : _subItem);
+        }
+        return _keyMap.type === 'number'? +_item : _item;
+    }
+
     const parsedData = _data.map(item => {
-        const parsedItem = {};
+        let parsedItem = {};
 
         mapConfig.map(keyMap => {
+            if (keyMap.add) {
+                parsedItem = { ...parsedItem, ...keyMap.add }; 
+            }
+            // If in out are the same
+            if (keyMap.inOut) {
+                parsedItem[keyMap.inOut] = convertValueType(item[keyMap.inOut], keyMap);
+                return;
+            }
             // If the 'in' key is flat
             if (_.isString(keyMap.in) || !isNaN(keyMap.in)) {
-                parsedItem[keyMap.out] = keyMap.type === 'number'? +item[keyMap.in] : item[keyMap.in];
+                parsedItem[keyMap.out] = convertValueType(item[keyMap.in], keyMap);
                 return;
             }
             // If the 'in' key is nested
@@ -188,7 +203,7 @@ export const mapApiFields = (data, mapConfig = []) => {
                     itemBuffer = itemBuffer[inKey];
                 });
                 
-                parsedItem[keyMap.out] = keyMap.type === 'number'? +itemBuffer : itemBuffer;
+                parsedItem[keyMap.out] = convertValueType(itemBuffer, keyMap);
                 return;
             }
         });

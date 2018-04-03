@@ -8,29 +8,29 @@ export const appStoreEntryMap = [
     },
     {
         in: ['im:image', 0, 'label'],
-        out: appFields.ICON
+        out: appFields.ICON_53
     },
     {
         in: ['im:image', 0, 'attributes', 'height'],
-        out: appFields.ICON_HEIGHT,
+        out: appFields.ICON_53_HEIGHT,
         type: 'number',
     },
     {
         in: ['im:image', 1, 'label'],
-        out: appFields.ICON_2X
+        out: appFields.ICON_75
     },
     {
         in: ['im:image', 1, 'attributes', 'height'],
-        out: appFields.ICON_2X_HEIGHT,
+        out: appFields.ICON_75_HEIGHT,
         type: 'number',
     },
     {
         in: ['im:image', 2, 'label'],
-        out: appFields.ICON_3X
+        out: appFields.ICON_100
     },
     {
         in: ['im:image', 2, 'attributes', 'height'],
-        out: appFields.ICON_3X_HEIGHT,
+        out: appFields.ICON_100_HEIGHT,
         type: 'number',
     },
     {
@@ -76,7 +76,7 @@ export const appStoreEntryMap = [
     },
     {
         in: ['link', 'attributes', 'href'],
-        out: appFields.LINK_HREF
+        out: appFields.LINK_URL
     },
     {
         in: ['id', 'attributes', 'im:id'],
@@ -93,7 +93,7 @@ export const appStoreEntryMap = [
     },
     {
         in: ['im:artist', 'attributes', 'href'],
-        out: appFields.ARTIST_HREF
+        out: appFields.ARTIST_URL
     },
     {
         in: ['category', 'attributes', 'im:id'],
@@ -122,6 +122,42 @@ export const appStoreEntryMap = [
     },
 ];
 
+export const appLookUpMap = [
+    {
+        in: 'trackId',
+        out: appFields.ID,
+    },
+    { inOut: appFields.IS_GAME_CENTER_ENABLED },
+    { inOut: appFields.SCREENSHOT_URLS },
+    { inOut: appFields.IPAD_SCREENSHOT_URLS },
+    { inOut: appFields.APPLE_TV_SCREENSHOT_URLS },
+    {
+        in: ['artworkUrl60'],
+        out: appFields.ICON_60,
+        add: { [appFields.ICON_60_HEIGHT]: 60 },
+    },
+    {
+        in: ['artworkUrl512'],
+        out: appFields.ICON_512,
+        add: { [appFields.ICON_512_HEIGHT]: 512 },
+    },
+    { inOut: appFields.FEATURES },
+    { inOut: appFields.ADVISORIES },
+    { inOut: appFields.SUPPORTED_DEVICES },
+    { inOut: appFields.AVG_USER_RATING, type: 'number' },
+    { inOut: appFields.LANG_CODES },
+    { inOut: appFields.FILE_SIZE_BYTES, type: 'number' },
+    { inOut: appFields.CONTENT_ADVISORY_RATING },
+    { inOut: appFields.USER_RATING_COUNT, type: 'number' },
+    { inOut: appFields.TRACK_CONTENT_RATING },
+    { inOut: appFields.SELLER_NAME },
+    { inOut: appFields.GENRE_IDS, type: 'number' },
+    { inOut: appFields.GENRES },
+    { inOut: appFields.MIN_OS_VERSION },
+    { inOut: appFields.VERSION },
+    { inOut: appFields.IS_VPP_DEVICE_BASED_LICENSING_ENABLED },
+];
+
 export const appStoreMetaMap = [
     {
         in: ['author', 'name', 'label'],
@@ -145,7 +181,7 @@ export const appStoreMetaMap = [
     },
     {
         in: ['icon', 'label'],
-        out: appStoreMetaFields.ICON,
+        out: appStoreMetaFields.ICON_53,
     },
     {
         in: ['link', 0, 'attributes', 'rel'],
@@ -157,6 +193,6 @@ export const appStoreMetaMap = [
     },
     {
         in: ['link', 0, 'attributes', 'href'],
-        out: appStoreMetaFields.LINK_HREF
+        out: appStoreMetaFields.LINK_URL
     },
 ];

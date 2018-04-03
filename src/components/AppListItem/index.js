@@ -14,8 +14,8 @@ export const AppListItem = (props = {}) => {
 
     const appName = data[fields.NAME];
     const appCatName = data[fields.CATEGORY_LABEL];
-    const appIconSrc = data[fields.ICON_3X];
-    const appIconHeight = data[fields.ICON_3X_HEIGHT];
+    const appIconSrc = data[fields.ICON_100];
+    const appIconHeight = data[fields.ICON_100_HEIGHT];
     const appIconBorderRadius = isEvenRow ? appIconHeight / 2 : appIconHeight / 4;
     
     return (

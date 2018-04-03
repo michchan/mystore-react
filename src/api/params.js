@@ -5,3 +5,7 @@ export const topFreeAppsParams = {
 export const topGrossingAppsParams = {
     LIMIT: 'limit',
 }
+
+export const appLookUpQuery = {
+    ID: 'id',
+}
