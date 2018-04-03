@@ -82,6 +82,7 @@ export const handleApiCall = function * handleApiCall(config) {
         extraSuccessPayload,
         extraErrorPayload,
         callbackOnSuccess,
+        callbackOnError,
         processData,
         bindProcessedDataToAction,
         requestTimeout,
@@ -208,7 +209,7 @@ export const handleApiCall = function * handleApiCall(config) {
         }
 
     } catch (error) {
-        yield put({ type: errorType, error, ..._extraErrorPayload, triggerUi });
+        const action = { type: errorType, error, ..._extraErrorPayload, triggerUi };
 
         // Trigger passed callbacks on error
         for (const key in _callbackOnError) {
@@ -216,6 +217,8 @@ export const handleApiCall = function * handleApiCall(config) {
                 action[key] = yield call(_callbackOnError[key]);
             }
         }
+
+        yield put(action);
     }
 }
 
