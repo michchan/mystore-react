@@ -11,6 +11,8 @@ export const HomeScene = (props = {}) => {
         fetchTopFreeApps,
         fetchTopGrossingApps,
         appLoading,
+        appLookUpLoading,
+        loadingMore,
     } = props;
 
     if (appLoading)
@@ -22,7 +24,12 @@ export const HomeScene = (props = {}) => {
 
     return (
         <div className={styles.container}>
-            <AppList data={topFreeApps} loadMoreRows={fetchTopFreeApps}/>
+            <AppList 
+                data={topFreeApps} 
+                loadMoreRows={fetchTopFreeApps} 
+                appLookUpLoading={appLookUpLoading}
+                loadingMore={loadingMore}
+            />
         </div>
     );
 };
@@ -37,6 +44,8 @@ HomeScene.propTypes = {
     fetchTopFreeApps: PropTypes.func.isRequired,
     fetchTopGrossingApps: PropTypes.func.isRequired,
     appLoading: PropTypes.bool.isRequired,
+    appLookUpLoading: PropTypes.bool.isRequired,
+    loadingMore: PropTypes.bool.isRequired,
 };
 
 export default HomeScene;

@@ -4,11 +4,14 @@ import Rating from 'react-rating';
 
 import styles from './style.module.css';
 import { appFields as fields } from '../../api';
+import { assetImages } from '../../assets';
 
 export const AppListItem = (props = {}) => {
     const { 
         data, 
-        index 
+        index,
+        appLookUpLoading,
+        ...passedProps
     } = props;
 
     const rowNumber = index + 1;
@@ -23,7 +26,7 @@ export const AppListItem = (props = {}) => {
     const userRatingCount = data[fields.USER_RATING_COUNT];
     
     return (
-        <div {...props} className={styles.container}>
+        <div {...passedProps} className={styles.container}>
             <div className={styles.innerContainer}>
                 <div className={styles.rowNumber}>{ rowNumber }</div>
 
@@ -37,7 +40,13 @@ export const AppListItem = (props = {}) => {
                     <div className={styles.appName}>{ appName }</div>
                     <div className={styles.appCatName}>{ appCatName }</div>
                     {
-                        (userRating && userRatingCount) &&
+                        (!!appLookUpLoading) &&
+                        <div className={styles.appRatingContainer}>
+                            <img src={assetImages.loadingSpinner} alt='loading' className={styles.loadingSpinner}/>
+                        </div>
+                    }
+                    {
+                        (!appLookUpLoading && userRating && userRatingCount) &&
                         <div className={styles.appRatingContainer}>  
                             <div className={styles.userRating}>
                                 <Rating 
@@ -62,6 +71,7 @@ AppListItem.defaultProps = {
 AppListItem.propTypes = {
     data: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
+    appLookUpLoading: PropTypes.bool.isRequired,
 };
 
 export default AppListItem;
