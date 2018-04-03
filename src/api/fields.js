@@ -1,5 +1,5 @@
 /* The fields to be converted to or used */
-export const appStoreEntryFields = {
+export const appFields = {
     NAME: 'name',
     ICON: 'icon',
     ICON_HEIGHT: 'icon_height',

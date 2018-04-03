@@ -1,124 +1,124 @@
-import { appStoreEntryFields, appStoreMetaFields } from ".";
+import { appFields, appStoreMetaFields } from ".";
 
 /* Map API fields to used fields */
 export const appStoreEntryMap = [
     {
         in: ['im:name', 'label'],
-        out: appStoreEntryFields.NAME
+        out: appFields.NAME
     },
     {
         in: ['im:image', 0, 'label'],
-        out: appStoreEntryFields.ICON
+        out: appFields.ICON
     },
     {
         in: ['im:image', 0, 'attributes', 'height'],
-        out: appStoreEntryFields.ICON_HEIGHT,
+        out: appFields.ICON_HEIGHT,
         type: 'number',
     },
     {
         in: ['im:image', 1, 'label'],
-        out: appStoreEntryFields.ICON_2X
+        out: appFields.ICON_2X
     },
     {
         in: ['im:image', 1, 'attributes', 'height'],
-        out: appStoreEntryFields.ICON_2X_HEIGHT,
+        out: appFields.ICON_2X_HEIGHT,
         type: 'number',
     },
     {
         in: ['im:image', 2, 'label'],
-        out: appStoreEntryFields.ICON_3X
+        out: appFields.ICON_3X
     },
     {
         in: ['im:image', 2, 'attributes', 'height'],
-        out: appStoreEntryFields.ICON_3X_HEIGHT,
+        out: appFields.ICON_3X_HEIGHT,
         type: 'number',
     },
     {
         in: ['summary', 'label'],
-        out: appStoreEntryFields.SUMMARY
+        out: appFields.SUMMARY
     },
     {
         in: ['im:price', 'label'],
-        out: appStoreEntryFields.PRICE_LABEL
+        out: appFields.PRICE_LABEL
     },
     {
         in: ['im:price', 'attributes', 'amount'],
-        out: appStoreEntryFields.PRICE_AMOUNT,
+        out: appFields.PRICE_AMOUNT,
         type: 'number',
     },
     {
         in: ['im:price', 'attributes', 'currency'],
-        out: appStoreEntryFields.PRICE_CURRENCY
+        out: appFields.PRICE_CURRENCY
     },
     {
         in: ['im:contentType', 'attributes', 'term'],
-        out: appStoreEntryFields.CONTENT_TYPE_TERM
+        out: appFields.CONTENT_TYPE_TERM
     },
     {
         in: ['im:contentType', 'attributes', 'label'],
-        out: appStoreEntryFields.CONTENT_TYPE_LABEL
+        out: appFields.CONTENT_TYPE_LABEL
     },
     {
         in: ['rights', 'label'],
-        out: appStoreEntryFields.RIGHTS
+        out: appFields.RIGHTS
     },
     {
         in: ['title', 'label'],
-        out: appStoreEntryFields.TITLE
+        out: appFields.TITLE
     },
     {
         in: ['link', 'attributes', 'rel'],
-        out: appStoreEntryFields.LINK_REL
+        out: appFields.LINK_REL
     },
     {
         in: ['link', 'attributes', 'type'],
-        out: appStoreEntryFields.LINK_TYPE
+        out: appFields.LINK_TYPE
     },
     {
         in: ['link', 'attributes', 'href'],
-        out: appStoreEntryFields.LINK_HREF
+        out: appFields.LINK_HREF
     },
     {
         in: ['id', 'attributes', 'im:id'],
-        out: appStoreEntryFields.ID,
+        out: appFields.ID,
         type: 'number',
     },
     {
         in: ['id', 'attributes', 'im:bundleId'],
-        out: appStoreEntryFields.BUNDLE_ID
+        out: appFields.BUNDLE_ID
     },
     {
         in: ['im:artist', 'label'],
-        out: appStoreEntryFields.ARTIST_LABEL
+        out: appFields.ARTIST_LABEL
     },
     {
         in: ['im:artist', 'attributes', 'href'],
-        out: appStoreEntryFields.ARTIST_HREF
+        out: appFields.ARTIST_HREF
     },
     {
         in: ['category', 'attributes', 'im:id'],
-        out: appStoreEntryFields.CATEGORY_ID,
+        out: appFields.CATEGORY_ID,
         type: 'number',
     },
     {
         in: ['category', 'attributes', 'term'],
-        out: appStoreEntryFields.CATEGORY_TERM
+        out: appFields.CATEGORY_TERM
     },
     {
         in: ['category', 'attributes', 'scheme'],
-        out: appStoreEntryFields.CATEGORY_SCHEME
+        out: appFields.CATEGORY_SCHEME
     },
     {
         in: ['category', 'attributes', 'label'],
-        out: appStoreEntryFields.CATEGORY_LABEL
+        out: appFields.CATEGORY_LABEL
     },
     {
         in: ['im:releaseDate', 'label'],
-        out: appStoreEntryFields.RELEASE_DATE_TIMESTAMP
+        out: appFields.RELEASE_DATE_TIMESTAMP
     },
     {
         in: ['im:releaseDate', 'attributes', 'label'],
-        out: appStoreEntryFields.RELEASE_DATE_LABEL
+        out: appFields.RELEASE_DATE_LABEL
     },
 ];
 
