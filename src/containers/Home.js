@@ -11,6 +11,7 @@ import {
     startFetchingTopGrossingAppsFlow, 
     START_INIT_FETCH_FLOW
 } from '../actions';
+import { topFreeAppsSelector, topGrossingAppsSelector } from '../selectors';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -32,7 +33,10 @@ class HomeContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({ });
+const mapStateToProps = (state, ownProps) => ({
+    topFreeApps: topFreeAppsSelector(state),
+    topGrossingApps: topGrossingAppsSelector(state),
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     initFetch: () => dispatch({ type: START_INIT_FETCH_FLOW }),
