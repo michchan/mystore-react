@@ -24,6 +24,11 @@ export const startFetchingTopFreeAppsFlow = (limit = 100) => ({
     limit
 });
 
+export const startFetchingTopGrossingAppsFlow = (limit = 10) => ({
+    type: START_FETCHING_TOP_GROSSING_APPS_FLOW,
+    limit
+});
+
 export default {
     START_INIT_FETCH_FLOW,
     INIT_FETCH_STARTED,
@@ -41,4 +46,5 @@ export default {
     FETCHING_TOP_GROSSING_APPS_ERROR,
 
     startFetchingTopFreeAppsFlow,
+    startFetchingTopGrossingAppsFlow,
 };
