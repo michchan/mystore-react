@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Rating from 'react-rating';
+
 import styles from './style.module.css';
 import { appFields as fields } from '../../api';
 
@@ -17,6 +19,8 @@ export const AppListItem = (props = {}) => {
     const appIconSrc = data[fields.ICON_100];
     const appIconHeight = data[fields.ICON_100_HEIGHT];
     const appIconBorderRadius = isEvenRow ? appIconHeight / 2 : appIconHeight / 4;
+    const userRating = data[fields.AVG_USER_RATING];
+    const userRatingCount = data[fields.USER_RATING_COUNT];
     
     return (
         <div {...props} className={styles.container}>
@@ -32,7 +36,21 @@ export const AppListItem = (props = {}) => {
                 <div className={styles.colRight}>
                     <div className={styles.appName}>{ appName }</div>
                     <div className={styles.appCatName}>{ appCatName }</div>
-                    <div className={styles.appRatingContainer}>{ 'rating placeholder' }</div>
+                    {
+                        (userRating && userRatingCount) &&
+                        <div className={styles.appRatingContainer}>  
+                            <div className={styles.userRating}>
+                                <Rating 
+                                    fractions={2} 
+                                    initialRating={+userRating} 
+                                    readonly
+                                    emptySymbol="fa fa-star-o"
+                                    fullSymbol="fa fa-star"
+                                />
+                            </div>
+                            <div className={styles.userRatingCount}>{ `(${userRatingCount})` }</div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -42,7 +60,7 @@ export const AppListItem = (props = {}) => {
 AppListItem.defaultProps = {
 };
 AppListItem.propTypes = {
-    data: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+    data: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
 };
 

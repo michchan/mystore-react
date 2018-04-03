@@ -45,16 +45,30 @@
     color: $darkTextPrimary;
     font-size: $H3;
     font-weight: 100;
-    padding-bottom: 10px;
 }
 
 .appCatName {
+    padding-top: 10px;
     color: $greyTextColor;
     font-size: $H6;
     font-weight: 100;
-    padding-bottom: 10px;
 }
 
 .appRatingContainer {
-    color: #DEDEDE;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.userRating {
+    color: $orangeYellow;
+    padding-right: 5px;
+    letter-spacing: 2px;
+}
+
+.userRatingCount {
+    color: $greyTextColor;
+    font-size: $P;
+    font-weight: 200;
 }

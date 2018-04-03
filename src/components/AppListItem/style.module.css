@@ -35,14 +35,26 @@
 .appName {
   color: #333;
   font-size: 20px;
-  font-weight: 100;
-  padding-bottom: 10px; }
+  font-weight: 100; }
 
 .appCatName {
+  padding-top: 10px;
   color: #999;
   font-size: 14px;
-  font-weight: 100;
-  padding-bottom: 10px; }
+  font-weight: 100; }
 
 .appRatingContainer {
-  color: #DEDEDE; }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10px; }
+
+.userRating {
+  color: #f4a338;
+  padding-right: 5px;
+  letter-spacing: 2px; }
+
+.userRatingCount {
+  color: #999;
+  font-size: 12px;
+  font-weight: 200; }
