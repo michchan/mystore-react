@@ -14,10 +14,22 @@ const INITIAL_STATE = {
 
 export const apps = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case FETCHING_APPS_LOOKUP_SUCCESS: return {
-            ...state,
-            lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
-            entities: _.merge(state.entities, action.entities),
+        case FETCHING_APPS_LOOKUP_SUCCESS: {
+            let newEntities = { ...action.entities, ...state.entities };
+
+            _.forEach(newEntities, (entity, appId) => {
+                _.forEach(action.entities, (newEntity, _appId) => {
+                    if (+_appId === +appId) {
+                        newEntities[appId] = { ...entity, ...newEntity };
+                    }
+                });
+            });
+
+            return {
+                ...state,
+                lastFetchMoment: action.fetchMoment || state.lastFetchMoment,
+                entities: newEntities,
+            };
         }
         case INIT_FETCH_SUCCESS: return {
             ...state,
