@@ -14,7 +14,19 @@ const getAll = (entities, result, filterTerms) => {
 
     return mappedResult.filter(entity => {
         for (const term of filterTerms) {
+            // filter by app name
             if (findStringIgnoreCase(entity[appFields.NAME], term))
+                return true;
+            // filter by author
+            if (findStringIgnoreCase(entity[appFields.ARTIST_LABEL], term))
+                return true;
+            // filter by genres
+            for (const genre of entity[appFields.GENRES]) {
+                if (findStringIgnoreCase(genre, term)) 
+                    return true;
+            }
+            // filter by summary
+            if (findStringIgnoreCase(entity[appFields.SUMMARY], term))
                 return true;
         }
 
