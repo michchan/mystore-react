@@ -67,15 +67,19 @@ export const AppList = (props = {}) => {
     return (
         <AutoSizer>
             {({ width, height }) => (
-                <List
-                    width={width}
-                    height={height - headerHeight - 5} // 5 is to make sure the window scroll bar will not show
-                    rowCount={rowCount}
-                    rowHeight={120}
-                    rowRenderer={(row) => _rowRenderer(row, props)}
-                    onScroll={(data) => _handleOnScroll(data, props)}
-                    scrollTop={scrollTop}
-                />
+                data.length? 
+                    <List
+                        width={width}
+                        height={height - headerHeight - 5} // 5 is to make sure the window scroll bar will not show
+                        rowCount={rowCount}
+                        rowHeight={120}
+                        rowRenderer={(row) => _rowRenderer(row, props)}
+                        onScroll={(data) => _handleOnScroll(data, props)}
+                        scrollTop={scrollTop}
+                    /> :
+                    <div className={styles.noResultContainer} style={{ width, height: height - headerHeight - 5 }}>
+                        No result found.
+                    </div>
             )}
         </AutoSizer>
     );

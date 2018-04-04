@@ -12,3 +12,11 @@
 .loadingSpinner {
     width: 10vw;
 }
+
+.noResultContainer {
+    @extend .container;
+
+    color: $greyTextColor;
+    font-size: $H4;
+    font-weight: 100;
+}

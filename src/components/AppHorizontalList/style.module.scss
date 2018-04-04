@@ -35,3 +35,11 @@
     flex: 0 0 auto;
     width: 20px;
 }
+
+.noResultText {
+    width: 100vw;
+    color: $greyTextColor;
+    font-size: $H4;
+    font-weight: 100;
+    text-align: center;
+}

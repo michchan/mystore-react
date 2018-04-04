@@ -60,14 +60,19 @@ export class AppHorizontalList extends Component {
                 <div className={styles.listTitle}>{ listTitle }</div>
                 <div ref={ref => this._listRef = ref} className={styles.listContainer} onScroll={handleOnScroll}>
                     <div className={styles.spacer}/>
-                    {data.map((item, index) => (
-                        <AppHorizontalListItem
-                            key={index} 
-                            index={index}
-                            data={item}
-                            appLookUpLoading={props.appLookUpLoading}
-                        />
-                    ))}
+                    {
+                        !!data.length && data.map((item, index) => (
+                            <AppHorizontalListItem
+                                key={index} 
+                                index={index}
+                                data={item}
+                                appLookUpLoading={props.appLookUpLoading}
+                            />
+                        ))
+                    }
+                    {
+                        !data.length && <div className={styles.noResultText}>No Result found.</div>
+                    }
                     <div className={styles.spacer}/>
                 </div>
             </div>
