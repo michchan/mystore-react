@@ -7,16 +7,18 @@ import {
     FETCHING_APPS_LOOKUP_SUCCESS,
     FETCHING_APPS_LOOKUP_STARTED,
     FETCHING_APPS_LOOKUP_ERROR,
-    UPDATE_SCROLL_HORIZONTAL_OFFSET,
+    UPDATE_SCROLL_LEFT,
     UPDATE_SCROLL_WIDTH,
-    UPDATE_CLIENT_SIZE
+    UPDATE_CLIENT_SIZE,
+    UPDATE_SCROLL_TOP
 } from '../actions';
 
 const INITIAL_STATE = {
     appLookUpLoading: false,
     appLoading: false,
     loadingMore: false,
-    scrollHorizontalOffset: 0,
+    hasReachedEndHorizontal: false,
+    scrollLeft: 0,
     scrollTop: 0,
     scrollWidth: 0,
     clientWidth: 0,
@@ -27,17 +29,21 @@ export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
-        case UPDATE_SCROLL_HORIZONTAL_OFFSET: {
-            const isDownwardScrolling = action.scrollTop > state.scrollTop;
-            const isOffsetIncreasing = action.offset > state.scrollHorizontalOffset;
-            
-            // Prevent wrong synchronous scroll after user has manually scrolled horizontally
-            if (isDownwardScrolling !== isOffsetIncreasing) return state;
-
+        case UPDATE_SCROLL_TOP: {
+            const hasReachedEndHorizontal = action.scrollTop * 2/3 >= state.scrollWidth - state.clientWidth;
+            return {
+                ...state,
+                hasReachedEndHorizontal: hasReachedEndHorizontal,
+                scrollLeft: state.hasReachedEndHorizontal? state.scrollLeft : action.scrollTop * 2/3,
+                scrollTop: action.scrollTop,
+            };
+        }
+        case UPDATE_SCROLL_LEFT: {
+            const hasReachedEndHorizontal = state.scrollLeft >= state.scrollWidth - state.clientWidth;
             return { 
                 ...state, 
-                scrollHorizontalOffset: action.offset,
-                scrollTop: action.scrollTop || state.scrollTop,
+                hasReachedEndHorizontal: hasReachedEndHorizontal,
+                scrollLeft: hasReachedEndHorizontal? state.scrollLeft : action.scrollLeft,
             };
         }
         case FETCHING_APPS_LOOKUP_SUCCESS: 

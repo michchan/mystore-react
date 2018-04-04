@@ -17,7 +17,7 @@ export const HomeScene = (props = {}) => {
         scrollHorizontal,
         setScrollWidth,
         handleOnHorizontalScroll,
-        scrollHorizontalOffset,
+        scrollLeft,
     } = props;
 
     if (appLoading)
@@ -35,7 +35,7 @@ export const HomeScene = (props = {}) => {
                 data={topGrossingApps}
                 appLookUpLoading={appLookUpLoading}
                 meta={topGrossingAppsMeta}
-                scrollOffset={scrollHorizontalOffset}
+                scrollOffset={scrollLeft}
                 setScrollWidth={setScrollWidth}
                 handleOnScroll={handleOnHorizontalScroll}
             />
@@ -69,7 +69,7 @@ HomeScene.propTypes = {
     appLoading: PropTypes.bool.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
-    scrollHorizontalOffset: PropTypes.number.isRequired,
+    scrollLeft: PropTypes.number.isRequired,
 };
 
 export default HomeScene;

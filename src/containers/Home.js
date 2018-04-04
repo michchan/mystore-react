@@ -10,11 +10,12 @@ import {
     startFetchingTopFreeAppsFlow, 
     startFetchingTopGrossingAppsFlow, 
     START_INIT_FETCH_FLOW,
-    updateScrollHorizontalOffset,
+    updateScrollLeft,
     updateScrollWidth,
-    updateClientSize
+    updateClientSize,
+    updateScrollTop
 } from '../actions';
-import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector, homeScrollHorizontalOffsetSelector } from '../selectors';
+import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector, homeScrollLeftSelector } from '../selectors';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -53,7 +54,7 @@ const mapStateToProps = (state, ownProps) => ({
     appLoading: homeAppLoadingSelector(state),
     appLookUpLoading: homeAppLookUpLoadingSelector(state),
     loadingMore: homeAppLoadingMoreSelector(state),
-    scrollHorizontalOffset: homeScrollHorizontalOffsetSelector(state),
+    scrollLeft: homeScrollLeftSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -61,9 +62,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
     scrollHorizontal: ({ clientHeight, scrollHeight, scrollTop }) => {
-        dispatch(updateScrollHorizontalOffset(scrollTop * 2/3, scrollTop)); // make horizontal scroll a bit slower then vertical scroll
+        dispatch(updateScrollTop(scrollTop));
     },
-    handleOnHorizontalScroll: (e) => dispatch(updateScrollHorizontalOffset(e.target.scrollLeft)),
+    handleOnHorizontalScroll: (e) => dispatch(updateScrollLeft(e.target.scrollLeft)),
     setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
     updateClientSize: (width, height) => dispatch(updateClientSize(width, height)),
 });
