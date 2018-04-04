@@ -10,7 +10,9 @@ import {
     startFetchingTopFreeAppsFlow, 
     startFetchingTopGrossingAppsFlow, 
     START_INIT_FETCH_FLOW,
-    updateScrollHorizontalOffset
+    updateScrollHorizontalOffset,
+    updateScrollWidth,
+    updateClientSize
 } from '../actions';
 import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector, homeScrollHorizontalOffsetSelector } from '../selectors';
 
@@ -25,12 +27,22 @@ class HomeContainer extends React.Component {
     componentWillMount() {
         // fetch action started
         this.props.initFetch();
+        this.props.updateClientSize(window.innerWidth, window.innerHeight);
+        window.addEventListener('resize', this._handleWindowResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this._handleWindowResize);
     }
 
     render() {
         return (
             <RenderedScene {...this.props}/> //Some View
         );
+    }
+
+    _handleWindowResize = (e) => {
+        this.props.updateClientSize(e.target.innerWidth, e.target.innerHeight);
     }
 }
 
@@ -49,8 +61,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
     scrollHorizontal: ({ clientHeight, scrollHeight, scrollTop }) => {
-        dispatch(updateScrollHorizontalOffset(scrollTop * 2/3)); // make horizontal scroll a bit slower then vertical scroll
+        dispatch(updateScrollHorizontalOffset(scrollTop * 2/3, scrollTop)); // make horizontal scroll a bit slower then vertical scroll
     },
+    handleOnHorizontalScroll: (e) => dispatch(updateScrollHorizontalOffset(e.target.scrollLeft)),
+    setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
+    updateClientSize: (width, height) => dispatch(updateClientSize(width, height)),
 });
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );

@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { AutoSizer } from 'react-virtualized';
 
 import { ROOT_ROUTE } from './constants/routes';
 import { AppErrorBoundary } from './components/AppErrorBoundary';

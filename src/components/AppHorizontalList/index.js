@@ -15,15 +15,31 @@ export class AppHorizontalList extends Component {
         meta: PropTypes.object,
         appLookUpLoading: PropTypes.bool.isRequired,
         scrollOffset: PropTypes.number.isRequired,
+        setScrollWidth: PropTypes.func.isRequired,
+        handleOnScroll: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
-        this._listRef && (this._listRef.scrollLeft = this.props.scrollOffset);
+        const { scrollOffset, setScrollWidth } = this.props;
+        if (this._listRef) {
+            this._listRef.scrollLeft = scrollOffset;
+            setScrollWidth && setScrollWidth(this._listRef.scrollWidth);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.scrollOffset !== this.props.scrollOffset) {
+        const { scrollOffset, setScrollWidth, data } = this.props;
+
+        if (nextProps.scrollOffset !== scrollOffset) {
             this._listRef && (this._listRef.scrollLeft = nextProps.scrollOffset);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { data, setScrollWidth } = this.props;
+
+        if (prevProps.data.length !== data.length) {
+            setScrollWidth && setScrollWidth(this._listRef.scrollWidth);
         }
     }
 
@@ -34,6 +50,7 @@ export class AppHorizontalList extends Component {
             meta,
             appLookUpLoading,
             scrollOffset,
+            handleOnScroll,
         } = props;
     
         const listTitle = meta[appStoreMetaFields.TITLE];
@@ -41,7 +58,7 @@ export class AppHorizontalList extends Component {
         return (
             <div className={styles.container}>
                 <div className={styles.listTitle}>{ listTitle }</div>
-                <div ref={ref => this._listRef = ref} className={styles.listContainer}>
+                <div ref={ref => this._listRef = ref} className={styles.listContainer} onScroll={handleOnScroll}>
                     <div className={styles.spacer}/>
                     {data.map((item, index) => (
                         <AppHorizontalListItem
