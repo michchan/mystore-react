@@ -43,7 +43,7 @@ export const homeUi = (state = INITIAL_STATE, action) => {
             return { 
                 ...state, 
                 hasReachedEndHorizontal: hasReachedEndHorizontal,
-                scrollLeft: hasReachedEndHorizontal? state.scrollLeft : action.scrollLeft,
+                scrollLeft: state.hasReachedEndHorizontal? state.scrollLeft : action.scrollLeft,
             };
         }
         case FETCHING_APPS_LOOKUP_SUCCESS: 
