@@ -1,0 +1,40 @@
+{
+    "author": {
+        "name": {
+            "label": "iTunes Store"
+        },
+        "uri": {
+            "label": "http://www.apple.com/itunes/"
+        }
+    },
+    "updated": {
+        "label": "2018-04-03T02:43:26-07:00"
+    },
+    "rights": {
+        "label": "Copyright 2008 Apple Inc."
+    },
+    "title": {
+        "label": "iTunes Store：免費 App 排行"
+    },
+    "icon": {
+        "label": "http://itunes.apple.com/favicon.ico"
+    },
+    "link": [
+        {
+            "attributes": {
+                "rel": "alternate",
+                "type": "text/html",
+                "href": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=hk&id=172314&popId=27"
+            }
+        },
+        {
+            "attributes": {
+                "rel": "self",
+                "href": "https://itunes.apple.com/hk/rss/topfreeapplications/limit=10/json"
+            }
+        }
+    ],
+    "id": {
+        "label": "https://itunes.apple.com/hk/rss/topfreeapplications/limit=10/json"
+    }
+}

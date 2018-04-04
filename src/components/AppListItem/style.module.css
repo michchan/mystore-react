@@ -1,0 +1,63 @@
+.container {
+  background-color: #fff;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  padding-left: 20px;
+  cursor: pointer; }
+  .container:hover {
+    background-color: #F7F7F7; }
+
+.innerContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 0.8px solid #EAEAEA;
+  padding-right: 10px; }
+
+.rowNumber {
+  width: 52px;
+  font-size: 24px;
+  color: #999;
+  font-weight: 100; }
+
+.appIcon {
+  margin-right: 20px; }
+
+.colRight {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center; }
+
+.appName {
+  color: #333;
+  font-size: 20px;
+  font-weight: 100; }
+
+.appCatName {
+  padding-top: 10px;
+  color: #999;
+  font-size: 14px;
+  font-weight: 100; }
+
+.appRatingContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10px; }
+
+.userRating {
+  color: #f4a338;
+  padding-right: 5px;
+  letter-spacing: 2px; }
+
+.userRatingCount {
+  color: #999;
+  font-size: 12px;
+  font-weight: 200; }
+
+.loadingSpinner {
+  width: 20px; }

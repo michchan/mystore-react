@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 60px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; }
+
+.input {
+  width: 95vw;
+  height: 40px;
+  background-color: #E5E5E5;
+  border-radius: 5px;
+  border: 0;
+  text-align: center;
+  color: #333;
+  font-size: 16px;
+  font-weight: 100; }
+  .input::placeholder {
+    color: #999;
+    font-family: "FontAwesome", "Open Sans"; }
+
+.buttonInsideInput, .clearButton, .searchButton {
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #999;
+  font-size: 20px; }
+  .buttonInsideInput:hover, .clearButton:hover, .searchButton:hover {
+    color: #333; }
+
+.clearButton {
+  right: 3.5vw; }
+
+.searchButton {
+  left: 3.5vw;
+  top: 11px;
+  width: 35px;
+  height: 35px; }

@@ -1,0 +1,15 @@
+.container, .noResultContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; }
+
+.loadingSpinner {
+  width: 10vw; }
+
+.noResultContainer {
+  color: #999;
+  font-size: 18px;
+  font-weight: 100; }

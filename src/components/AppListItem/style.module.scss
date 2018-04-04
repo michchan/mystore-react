@@ -1,0 +1,78 @@
+@import '../../constants/theme.scss';
+
+.container {
+    background-color: #fff;
+    display: flex;
+    flex: 1;
+    height: 100%;
+    padding-left: 20px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $itemHoverColor;
+    }
+}
+
+.innerContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: $borderWidth solid $borderColor;
+    padding-right: 10px;
+}
+
+.rowNumber {
+    width: 52px;
+    font-size: $H2;
+    color: $greyTextColor;
+    font-weight: 100;
+}
+
+.appIcon {
+    margin-right: 20px;
+}
+
+.colRight {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.appName {
+    color: $darkTextPrimary;
+    font-size: $H3;
+    font-weight: 100;
+}
+
+.appCatName {
+    padding-top: 10px;
+    color: $greyTextColor;
+    font-size: $H6;
+    font-weight: 100;
+}
+
+.appRatingContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.userRating {
+    color: $orangeYellow;
+    padding-right: 5px;
+    letter-spacing: 2px;
+}
+
+.userRatingCount {
+    color: $greyTextColor;
+    font-size: $P;
+    font-weight: 200;
+}
+
+.loadingSpinner {
+    width: 20px;
+}
