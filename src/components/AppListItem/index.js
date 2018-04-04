@@ -46,7 +46,7 @@ export const AppListItem = (props = {}) => {
                         </div>
                     }
                     {
-                        (!appLookUpLoading && userRating && userRatingCount) &&
+                        (!appLookUpLoading && !isNaN(userRating) && !isNaN(userRatingCount)) &&
                         <div className={styles.appRatingContainer}>  
                             <div className={styles.userRating}>
                                 <Rating 
