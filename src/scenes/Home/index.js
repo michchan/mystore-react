@@ -18,6 +18,8 @@ export const HomeScene = (props = {}) => {
         setScrollWidth,
         handleOnHorizontalScroll,
         scrollLeft,
+        searchValue,
+        onSearchValueChange,
     } = props;
 
     if (appLoading)
@@ -29,7 +31,10 @@ export const HomeScene = (props = {}) => {
 
     return (
         <div className={styles.container}>
-            <AppSearchBar/>
+            <AppSearchBar
+                value={searchValue}
+                onChange={onSearchValueChange}
+            />
 
             <AppHorizontalList
                 data={topGrossingApps}
@@ -66,10 +71,12 @@ HomeScene.propTypes = {
     scrollHorizontal: PropTypes.func.isRequired,
     setScrollWidth: PropTypes.func.isRequired,
     handleOnHorizontalScroll: PropTypes.func.isRequired,
+    onSearchValueChange: PropTypes.func.isRequired,
     appLoading: PropTypes.bool.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
     scrollLeft: PropTypes.number.isRequired,
+    searchValue: PropTypes.string.isRequired,
 };
 
 export default HomeScene;

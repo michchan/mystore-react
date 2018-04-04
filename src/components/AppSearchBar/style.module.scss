@@ -9,3 +9,20 @@
     justify-content: center;
     background-color: #fff;
 }
+
+.input {
+    width: 95vw;
+    height: 40px;
+    background-color: $greyBackground;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    color: $darkTextPrimary;
+    font-size: $H5;
+    font-weight: 100;
+
+    &::placeholder {
+        color: $greyTextColor;
+        font-family: "FontAwesome", "Open Sans";
+    }
+}

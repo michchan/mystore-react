@@ -6,6 +6,7 @@ export const UPDATE_CLIENT_SIZE = pfx + 'UPDATE_CLIENT_SIZE';
 export const UPDATE_SCROLL_TOP = pfx + 'UPDATE_SCROLL_TOP';
 export const UPDATE_SCROLL_LEFT = pfx + 'UPDATE_SCROLL_LEFT';
 export const UPDATE_SCROLL_WIDTH = pfx + 'UPDATE_SCROLL_WIDTH';
+export const UPDATE_SEARCH_VALUE = pfx + 'UPDATE_SEARCH_VALUE';
 
 /* ========= Action Creators ========= */
 
@@ -30,14 +31,21 @@ export const updateScrollWidth = (scrollWidth) => ({
     scrollWidth
 });
 
+export const updateSearchValue = (value) => ({
+    type: UPDATE_SEARCH_VALUE,
+    value
+});
+
 export default {
     UPDATE_CLIENT_SIZE,
     UPDATE_SCROLL_TOP,
     UPDATE_SCROLL_LEFT,
     UPDATE_SCROLL_WIDTH,
+    UPDATE_SEARCH_VALUE,
 
     updateClientSize,
     updateScrollTop,
     updateScrollLeft,
     updateScrollWidth,
+    updateSearchValue,
 };

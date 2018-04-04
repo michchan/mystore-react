@@ -10,7 +10,8 @@ import {
     UPDATE_SCROLL_LEFT,
     UPDATE_SCROLL_WIDTH,
     UPDATE_CLIENT_SIZE,
-    UPDATE_SCROLL_TOP
+    UPDATE_SCROLL_TOP,
+    UPDATE_SEARCH_VALUE
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -23,10 +24,12 @@ const INITIAL_STATE = {
     scrollWidth: 0,
     clientWidth: 0,
     clientHeight: 0,
+    searchValue: '',
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case UPDATE_SEARCH_VALUE: return { ...state, searchValue: action.value };
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
         case UPDATE_SCROLL_TOP: {

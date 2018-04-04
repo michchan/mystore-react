@@ -13,9 +13,19 @@ import {
     updateScrollLeft,
     updateScrollWidth,
     updateClientSize,
-    updateScrollTop
+    updateScrollTop,
+    updateSearchValue
 } from '../actions';
-import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector, homeScrollLeftSelector } from '../selectors';
+import { 
+    topFreeAppsSelector, 
+    topGrossingAppsSelector, 
+    homeAppLoadingSelector, 
+    homeAppLoadingMoreSelector, 
+    homeAppLookUpLoadingSelector, 
+    topGrossingAppsMetaSelector, 
+    homeScrollLeftSelector, 
+    homeSearchValueSelector 
+} from '../selectors';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -55,6 +65,7 @@ const mapStateToProps = (state, ownProps) => ({
     appLookUpLoading: homeAppLookUpLoadingSelector(state),
     loadingMore: homeAppLoadingMoreSelector(state),
     scrollLeft: homeScrollLeftSelector(state),
+    searchValue: homeSearchValueSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -67,6 +78,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnHorizontalScroll: (e) => dispatch(updateScrollLeft(e.target.scrollLeft)),
     setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
     updateClientSize: (width, height) => dispatch(updateClientSize(width, height)),
+    onSearchValueChange: (e) => dispatch(updateSearchValue(e.target.value)),
 });
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );
