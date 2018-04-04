@@ -9,9 +9,10 @@ import {} from '../components';
 import { 
     startFetchingTopFreeAppsFlow, 
     startFetchingTopGrossingAppsFlow, 
-    START_INIT_FETCH_FLOW
+    START_INIT_FETCH_FLOW,
+    updateScrollHorizontalOffset
 } from '../actions';
-import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector } from '../selectors';
+import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector, homeScrollHorizontalOffsetSelector } from '../selectors';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -40,12 +41,16 @@ const mapStateToProps = (state, ownProps) => ({
     appLoading: homeAppLoadingSelector(state),
     appLookUpLoading: homeAppLookUpLoadingSelector(state),
     loadingMore: homeAppLoadingMoreSelector(state),
+    scrollHorizontalOffset: homeScrollHorizontalOffsetSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     initFetch: () => dispatch({ type: START_INIT_FETCH_FLOW }),
     fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
+    scrollHorizontal: ({ clientHeight, scrollHeight, scrollTop }) => {
+        dispatch(updateScrollHorizontalOffset(scrollTop * 2/3)); // make horizontal scroll a bit slower then vertical scroll
+    },
 });
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );

@@ -6,17 +6,23 @@ import {
     FETCHING_TOP_FREE_APPS_ERROR,
     FETCHING_APPS_LOOKUP_SUCCESS,
     FETCHING_APPS_LOOKUP_STARTED,
-    FETCHING_APPS_LOOKUP_ERROR
+    FETCHING_APPS_LOOKUP_ERROR,
+    UPDATE_SCROLL_HORIZONTAL_OFFSET
 } from '../actions';
 
 const INITIAL_STATE = {
     appLookUpLoading: false,
     appLoading: false,
     loadingMore: false,
+    scrollHorizontalOffset: 0,
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case UPDATE_SCROLL_HORIZONTAL_OFFSET: return { 
+            ...state, 
+            scrollHorizontalOffset: action.offset,
+        };
         case FETCHING_APPS_LOOKUP_SUCCESS: 
         case FETCHING_APPS_LOOKUP_ERROR: return { ...state, appLookUpLoading: false };
         case FETCHING_APPS_LOOKUP_STARTED: return { ...state, appLookUpLoading: true };

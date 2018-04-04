@@ -50,6 +50,7 @@ export const AppList = (props = {}) => {
         loadMoreRows,
         loadingMore,
         headerHeight,
+        handleOnScroll,
     } = props;
     
     const rowCount = loadingMore? data.length + 1 : data.length;
@@ -73,17 +74,20 @@ export const AppList = (props = {}) => {
 const _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }, props) => {
     const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight && scrollTop !== 0;
     // Infinite scroll
+    props.handleOnScroll && props.handleOnScroll({ clientHeight, scrollHeight, scrollTop });
     scrolledToBottom && props.loadMoreRows();
 }
 
 AppList.defaultProps = {
     data: [],
     headerHeight: 0,
+    handleOnScroll: ()=>console.log('AppList: please pass handleOnScroll prop'),
 };
 
 AppList.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     loadMoreRows: PropTypes.func.isRequired,
+    handleOnScroll: PropTypes.func,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
     headerHeight: PropTypes.number,
