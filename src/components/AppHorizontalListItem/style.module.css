@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex: 0 0 auto;
+  width: 140px;
+  height: 240px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  padding: 10px 0px 10px 0px;
+  cursor: pointer; }
+  .container:hover {
+    background-color: #F7F7F7; }
+
+.appIcon {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px; }
+
+.appName {
+  width: 120px;
+  padding: 12px 10px 0px 10px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 200; }
+
+.appCatName {
+  width: 120px;
+  padding: 6px 10px 0px 10px;
+  color: #999;
+  font-size: 14px;
+  font-weight: 100; }

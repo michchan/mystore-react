@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.css';
-import { AppList } from '../../components';
+import { AppList, AppHorizontalList, AppSearchBar } from '../../components';
 import { assetImages } from '../../assets';
 
 export const HomeScene = (props = {}) => {
     const {
         topFreeApps,
         topGrossingApps,
+        topGrossingAppsMeta,
         fetchTopFreeApps,
         fetchTopGrossingApps,
         appLoading,
@@ -24,11 +25,20 @@ export const HomeScene = (props = {}) => {
 
     return (
         <div className={styles.container}>
+            <AppSearchBar/>
+
+            <AppHorizontalList
+                data={topGrossingApps}
+                appLookUpLoading={appLookUpLoading}
+                meta={topGrossingAppsMeta}
+            />
+            
             <AppList 
                 data={topFreeApps} 
                 loadMoreRows={fetchTopFreeApps} 
                 appLookUpLoading={appLookUpLoading}
                 loadingMore={loadingMore}
+                headerHeight={380}
             />
         </div>
     );
@@ -37,10 +47,12 @@ export const HomeScene = (props = {}) => {
 HomeScene.defaultProps = {
     topFreeApps: [],
     topGrossingApps: [],
+    topGrossingAppsMeta: {},
 };
 HomeScene.propTypes = {
     topFreeApps: PropTypes.arrayOf(PropTypes.object),
     topGrossingApps: PropTypes.arrayOf(PropTypes.object),
+    topGrossingAppsMeta: PropTypes.object,
     fetchTopFreeApps: PropTypes.func.isRequired,
     fetchTopGrossingApps: PropTypes.func.isRequired,
     appLoading: PropTypes.bool.isRequired,

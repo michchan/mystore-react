@@ -11,7 +11,7 @@ import {
     startFetchingTopGrossingAppsFlow, 
     START_INIT_FETCH_FLOW
 } from '../actions';
-import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector } from '../selectors';
+import { topFreeAppsSelector, topGrossingAppsSelector, homeAppLoadingSelector, homeAppLoadingMoreSelector, homeAppLookUpLoadingSelector, topGrossingAppsMetaSelector } from '../selectors';
 
 class HomeContainer extends React.Component {
     static defaultProps = {};
@@ -36,6 +36,7 @@ class HomeContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     topFreeApps: topFreeAppsSelector(state),
     topGrossingApps: topGrossingAppsSelector(state),
+    topGrossingAppsMeta: topGrossingAppsMetaSelector(state),
     appLoading: homeAppLoadingSelector(state),
     appLookUpLoading: homeAppLookUpLoadingSelector(state),
     loadingMore: homeAppLoadingMoreSelector(state),

@@ -1,0 +1,40 @@
+@import '../../constants/theme.scss';
+
+.container {
+    display: flex;
+    flex: 0 0 auto;
+    width: 140px;
+    height: 240px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $itemHoverColor;
+    }
+}
+
+.appIcon {
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+}
+
+.appName {
+    width: 120px;
+    padding: 12px 10px 0px 10px;
+    color: $darkTextPrimary;
+    font-size: $H5;
+    font-weight: 200;
+}
+
+.appCatName {
+    width: 120px;
+    padding: 6px 10px 0px 10px;
+    color: $greyTextColor;
+    font-size: $H6;
+    font-weight: 100;
+}

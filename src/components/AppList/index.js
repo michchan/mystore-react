@@ -49,6 +49,7 @@ export const AppList = (props = {}) => {
         data, 
         loadMoreRows,
         loadingMore,
+        headerHeight,
     } = props;
     
     const rowCount = loadingMore? data.length + 1 : data.length;
@@ -58,7 +59,7 @@ export const AppList = (props = {}) => {
             {({ width, height }) => (
                 <List
                     width={width}
-                    height={height}
+                    height={height - headerHeight - 5} // 5 is to make sure the window scroll bar will not show
                     rowCount={rowCount}
                     rowHeight={120}
                     rowRenderer={(row) => _rowRenderer(row, props)}
@@ -77,6 +78,7 @@ const _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }, props) => {
 
 AppList.defaultProps = {
     data: [],
+    headerHeight: 0,
 };
 
 AppList.propTypes = {
@@ -84,6 +86,7 @@ AppList.propTypes = {
     loadMoreRows: PropTypes.func.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
+    headerHeight: PropTypes.number,
 };
 
 export default AppList;
