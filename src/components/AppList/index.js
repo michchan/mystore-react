@@ -22,13 +22,11 @@ const _rowRenderer = ({
         loadingMore,
         appLookUpLoading,
         isFiltered,
-        pageSize,
     } = props;
 
     const isExtrudedItem = index === data.length;  
-    const isTooFewFilteredItem = isFiltered && data.length < pageSize;
 
-    if (loadingMore && isExtrudedItem && !isTooFewFilteredItem) {
+    if (loadingMore && isExtrudedItem && !isFiltered) {
         return (
             <div key={key} style={style} className={styles.container}>
                 <img src={assetImages.loadingSpinner} alt='loading' className={styles.loadingSpinner}/>
@@ -38,7 +36,7 @@ const _rowRenderer = ({
 
     const item = data[index];
 
-    if (!item) return (<div key={key} style={style} className={styles.container}/>);
+    if (!item) return (null);
 
     return (
         <AppListItem 
@@ -86,10 +84,11 @@ export const AppList = (props = {}) => {
 };
 
 const _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }, props) => {
+    const { handleOnScroll, loadMoreRows, isFiltered } = props;
     const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight && scrollTop !== 0;
     // Infinite scroll
-    props.handleOnScroll && props.handleOnScroll({ clientHeight, scrollHeight, scrollTop });
-    scrolledToBottom && props.loadMoreRows();
+    handleOnScroll && handleOnScroll({ clientHeight, scrollHeight, scrollTop });
+    (scrolledToBottom && !isFiltered) && loadMoreRows();
 }
 
 AppList.defaultProps = {
