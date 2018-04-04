@@ -18,9 +18,6 @@ if (!IS_DEV) {
     disableLogging();
 }
 
-// Init dotenv
-require('dotenv').config();
-
 ReactDOM.render((
     <AppErrorBoundary>
         <Provider store={store}>
