@@ -24,6 +24,7 @@ export const HomeScene = (props = {}) => {
         onSearchFocus,
         onSearchBlur,
         isSearchFocused,
+        scrollTop,
     } = props;
 
     if (appLoading)
@@ -61,6 +62,7 @@ export const HomeScene = (props = {}) => {
                 headerHeight={380}
                 handleOnScroll={scrollHorizontal}
                 isFiltered={!!searchValue}
+                scrollTop={scrollTop}
             />
         </div>
     );
@@ -90,6 +92,7 @@ HomeScene.propTypes = {
     isSearchFocused: PropTypes.bool.isRequired,
     scrollLeft: PropTypes.number.isRequired,
     searchValue: PropTypes.string.isRequired,
+    scrollTop: PropTypes.number.isRequired,
 };
 
 export default HomeScene;

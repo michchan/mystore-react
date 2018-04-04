@@ -27,7 +27,8 @@ import {
     topGrossingAppsMetaSelector, 
     homeScrollLeftSelector, 
     homeSearchValueSelector, 
-    homeSearchFocusedSelector
+    homeSearchFocusedSelector,
+    homeScrollTopSelector
 } from '../selectors';
 
 class HomeContainer extends React.Component {
@@ -81,6 +82,7 @@ const mapStateToProps = (state, ownProps) => ({
     scrollLeft: homeScrollLeftSelector(state),
     searchValue: homeSearchValueSelector(state),
     isSearchFocused: homeSearchFocusedSelector(state),
+    scrollTop: homeScrollTopSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

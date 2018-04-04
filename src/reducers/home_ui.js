@@ -12,7 +12,8 @@ import {
     UPDATE_CLIENT_SIZE,
     UPDATE_SCROLL_TOP,
     UPDATE_SEARCH_VALUE,
-    UPDATE_IS_SEARCH_FOCUSED
+    UPDATE_IS_SEARCH_FOCUSED,
+    UPDATE_FILTER_TEXT
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -22,6 +23,7 @@ const INITIAL_STATE = {
     hasReachedEndHorizontal: false,
     scrollLeft: 0,
     scrollTop: 0,
+    lastScrollTop: 0,
     scrollWidth: 0,
     clientWidth: 0,
     clientHeight: 0,
@@ -31,8 +33,17 @@ const INITIAL_STATE = {
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case UPDATE_FILTER_TEXT: return { 
+            ...state, 
+            scrollTop: !action.text? state.lastScrollTop : 0, // when there is filter text, scroll to top, otherwise scroll to last scroll top value
+            lastScrollTop: state.scrollTop === 0? state.lastScrollTop : state.scrollTop,
+        };
         case UPDATE_IS_SEARCH_FOCUSED: return { ...state, isSearchFocused: action.isFocused };
-        case UPDATE_SEARCH_VALUE: return { ...state, searchValue: action.value };
+        case UPDATE_SEARCH_VALUE: return { 
+            ...state, 
+            searchValue: action.value,
+            scrollTop: !action.value? state.lastScrollTop : state.scrollTop, // when there is filter text, scroll to top, otherwise scroll to last scroll top value
+        };
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
         case UPDATE_SCROLL_TOP: {

@@ -59,6 +59,7 @@ export const AppList = (props = {}) => {
         headerHeight,
         handleOnScroll,
         isFiltered,
+        scrollTop,
     } = props;
     
     const rowCount = loadingMore? data.length + 1 : data.length;
@@ -73,6 +74,7 @@ export const AppList = (props = {}) => {
                     rowHeight={120}
                     rowRenderer={(row) => _rowRenderer(row, props)}
                     onScroll={(data) => _handleOnScroll(data, props)}
+                    scrollTop={scrollTop}
                 />
             )}
         </AutoSizer>
@@ -100,6 +102,7 @@ AppList.propTypes = {
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
     isFiltered: PropTypes.bool.isRequired,
+    scrollTop: PropTypes.number.isRequired,
     headerHeight: PropTypes.number,
     pageSize: PropTypes.number,
 };
