@@ -14,7 +14,9 @@ import {
     updateScrollWidth,
     updateClientSize,
     updateScrollTop,
-    updateSearchValue
+    updateSearchValue,
+    updateIsSearchFocused,
+    updateFilterText
 } from '../actions';
 import { 
     topFreeAppsSelector, 
@@ -24,7 +26,8 @@ import {
     homeAppLookUpLoadingSelector, 
     topGrossingAppsMetaSelector, 
     homeScrollLeftSelector, 
-    homeSearchValueSelector 
+    homeSearchValueSelector, 
+    homeSearchFocusedSelector
 } from '../selectors';
 
 class HomeContainer extends React.Component {
@@ -40,6 +43,8 @@ class HomeContainer extends React.Component {
         this.props.initFetch();
         this.props.updateClientSize(window.innerWidth, window.innerHeight);
         window.addEventListener('resize', this._handleWindowResize);
+
+        this._updateFilterText = _.debounce(this.props.updateFilterText, 300);
     }
 
     componentWillUnmount() {
@@ -48,12 +53,21 @@ class HomeContainer extends React.Component {
 
     render() {
         return (
-            <RenderedScene {...this.props}/> //Some View
+            <RenderedScene 
+                {...this.props}
+                onSearchValueChange={this._handleSearchValueChange}
+            /> //Some View
         );
     }
 
     _handleWindowResize = (e) => {
         this.props.updateClientSize(e.target.innerWidth, e.target.innerHeight);
+    }
+
+    _handleSearchValueChange = (e) => {
+        const value = e.target.value;
+        this.props.updateSearchValue(value);
+        this._updateFilterText(value);
     }
 }
 
@@ -66,6 +80,7 @@ const mapStateToProps = (state, ownProps) => ({
     loadingMore: homeAppLoadingMoreSelector(state),
     scrollLeft: homeScrollLeftSelector(state),
     searchValue: homeSearchValueSelector(state),
+    isSearchFocused: homeSearchFocusedSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -78,7 +93,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     handleOnHorizontalScroll: (e) => dispatch(updateScrollLeft(e.target.scrollLeft)),
     setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
     updateClientSize: (width, height) => dispatch(updateClientSize(width, height)),
-    onSearchValueChange: (e) => dispatch(updateSearchValue(e.target.value)),
+    updateSearchValue: (value) => dispatch(updateSearchValue(value)),
+    updateFilterText: (value) => dispatch(updateFilterText(value)),
+    onSearchFocus: (e) => dispatch(updateIsSearchFocused(true)),
+    onSearchBlur: (e) => dispatch(updateIsSearchFocused(false)),
+    clearSearchValue: (e) => {
+        dispatch(updateSearchValue(''));
+        dispatch(updateFilterText(''));
+    },
 });
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );

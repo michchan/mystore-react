@@ -26,3 +26,33 @@
         font-family: "FontAwesome", "Open Sans";
     }
 }
+
+.buttonInsideInput {
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $greyTextColor;
+    font-size: $H3;
+
+    &:hover {
+        color: $darkTextPrimary;
+    }
+}
+
+.clearButton {
+    @extend .buttonInsideInput;
+    right: 3.5vw;
+}
+
+.searchButton {
+    @extend .buttonInsideInput;
+    left: 3.5vw;
+    top: 11px;
+    width: 35px;
+    height: 35px;
+}

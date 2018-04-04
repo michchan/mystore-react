@@ -6,3 +6,4 @@ export * from './dev';
 export * from './env';
 export * from './api';
 export * from './saga';
+export * from './string';

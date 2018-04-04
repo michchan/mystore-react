@@ -4,3 +4,4 @@ export const homeAppLookUpLoadingSelector = state => state.homeUi.appLookUpLoadi
 export const homeAppLoadingMoreSelector = state => state.homeUi.loadingMore;
 export const homeScrollLeftSelector = state => state.homeUi.scrollLeft;
 export const homeSearchValueSelector = state => state.homeUi.searchValue;
+export const homeSearchFocusedSelector = state => state.homeUi.isSearchFocused;

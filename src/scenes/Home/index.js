@@ -20,6 +20,10 @@ export const HomeScene = (props = {}) => {
         scrollLeft,
         searchValue,
         onSearchValueChange,
+        clearSearchValue,
+        onSearchFocus,
+        onSearchBlur,
+        isSearchFocused,
     } = props;
 
     if (appLoading)
@@ -34,6 +38,10 @@ export const HomeScene = (props = {}) => {
             <AppSearchBar
                 value={searchValue}
                 onChange={onSearchValueChange}
+                onFocus={onSearchFocus}
+                onBlur={onSearchBlur}
+                onClearText={clearSearchValue}
+                isFocused={isSearchFocused}
             />
 
             <AppHorizontalList
@@ -52,6 +60,7 @@ export const HomeScene = (props = {}) => {
                 loadingMore={loadingMore}
                 headerHeight={380}
                 handleOnScroll={scrollHorizontal}
+                isFiltered={!!searchValue}
             />
         </div>
     );
@@ -72,9 +81,13 @@ HomeScene.propTypes = {
     setScrollWidth: PropTypes.func.isRequired,
     handleOnHorizontalScroll: PropTypes.func.isRequired,
     onSearchValueChange: PropTypes.func.isRequired,
+    onSearchFocus: PropTypes.func.isRequired,
+    onSearchBlur: PropTypes.func.isRequired,
+    clearSearchValue: PropTypes.func.isRequired,
     appLoading: PropTypes.bool.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
+    isSearchFocused: PropTypes.bool.isRequired,
     scrollLeft: PropTypes.number.isRequired,
     searchValue: PropTypes.string.isRequired,
 };

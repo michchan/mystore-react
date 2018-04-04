@@ -7,6 +7,7 @@ export const UPDATE_SCROLL_TOP = pfx + 'UPDATE_SCROLL_TOP';
 export const UPDATE_SCROLL_LEFT = pfx + 'UPDATE_SCROLL_LEFT';
 export const UPDATE_SCROLL_WIDTH = pfx + 'UPDATE_SCROLL_WIDTH';
 export const UPDATE_SEARCH_VALUE = pfx + 'UPDATE_SEARCH_VALUE';
+export const UPDATE_IS_SEARCH_FOCUSED = pfx + 'UPDATE_IS_SEARCH_FOCUSED';
 
 /* ========= Action Creators ========= */
 
@@ -36,6 +37,11 @@ export const updateSearchValue = (value) => ({
     value
 });
 
+export const updateIsSearchFocused = (isFocused = false) => ({
+    type: UPDATE_IS_SEARCH_FOCUSED,
+    isFocused
+});
+
 export default {
     UPDATE_CLIENT_SIZE,
     UPDATE_SCROLL_TOP,
@@ -48,4 +54,5 @@ export default {
     updateScrollLeft,
     updateScrollWidth,
     updateSearchValue,
+    updateIsSearchFocused,
 };

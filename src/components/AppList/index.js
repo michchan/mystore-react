@@ -21,10 +21,14 @@ const _rowRenderer = ({
         data, 
         loadingMore,
         appLookUpLoading,
+        isFiltered,
+        pageSize,
     } = props;
 
+    const isExtrudedItem = index === data.length;  
+    const isTooFewFilteredItem = isFiltered && data.length < pageSize;
 
-    if (loadingMore && index === data.length) {
+    if (loadingMore && isExtrudedItem && !isTooFewFilteredItem) {
         return (
             <div key={key} style={style} className={styles.container}>
                 <img src={assetImages.loadingSpinner} alt='loading' className={styles.loadingSpinner}/>
@@ -33,6 +37,9 @@ const _rowRenderer = ({
     }
 
     const item = data[index];
+
+    if (!item) return (<div key={key} style={style} className={styles.container}/>);
+
     return (
         <AppListItem 
             key={key} 
@@ -51,6 +58,7 @@ export const AppList = (props = {}) => {
         loadingMore,
         headerHeight,
         handleOnScroll,
+        isFiltered,
     } = props;
     
     const rowCount = loadingMore? data.length + 1 : data.length;
@@ -81,6 +89,7 @@ const _handleOnScroll = ({ clientHeight, scrollHeight, scrollTop }, props) => {
 AppList.defaultProps = {
     data: [],
     headerHeight: 0,
+    pageSize: 10,
     handleOnScroll: ()=>console.log('AppList: please pass handleOnScroll prop'),
 };
 
@@ -90,7 +99,9 @@ AppList.propTypes = {
     handleOnScroll: PropTypes.func,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
+    isFiltered: PropTypes.bool.isRequired,
     headerHeight: PropTypes.number,
+    pageSize: PropTypes.number,
 };
 
 export default AppList;

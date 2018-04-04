@@ -11,7 +11,8 @@ import {
     UPDATE_SCROLL_WIDTH,
     UPDATE_CLIENT_SIZE,
     UPDATE_SCROLL_TOP,
-    UPDATE_SEARCH_VALUE
+    UPDATE_SEARCH_VALUE,
+    UPDATE_IS_SEARCH_FOCUSED
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -25,10 +26,12 @@ const INITIAL_STATE = {
     clientWidth: 0,
     clientHeight: 0,
     searchValue: '',
+    isSearchFocused: false,
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case UPDATE_IS_SEARCH_FOCUSED: return { ...state, isSearchFocused: action.isFocused };
         case UPDATE_SEARCH_VALUE: return { ...state, searchValue: action.value };
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
