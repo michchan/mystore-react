@@ -1,7 +1,7 @@
 {
     "servicesEnabled": {
         "reduxLogger": true,
-        "reduxDiffLogger": false,
+        "reduxDiffLogger": true,
         "loggingLib": true
     }
 }
