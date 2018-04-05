@@ -53,6 +53,7 @@ export const homeUi = (state = INITIAL_STATE, action) => {
                 hasReachedEndHorizontal: hasReachedEndHorizontal,
                 scrollLeft: state.hasReachedEndHorizontal? state.scrollLeft : action.scrollTop * 2/3,
                 scrollTop: action.scrollTop,
+                lastScrollTop: state.scrollTop,
             };
         }
         case UPDATE_SCROLL_LEFT: {

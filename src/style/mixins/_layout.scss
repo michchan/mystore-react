@@ -1,0 +1,49 @@
+@mixin size($map, $breakpoints: $default-screen-width-breakpoints) {
+    @each $breakpoint, $size in $map {
+        @if $breakpoint == null {
+            @include make-size($size);
+        }
+        @else {
+            // If $size is a key that exists in
+            // $breakpoints, use the value
+            @if map-has-key($breakpoints, $breakpoint) {
+                $breakpoint: map-get($breakpoints, $breakpoint);
+            }
+            @media screen and (min-width: $breakpoint) {
+                @include make-size($size);
+            }
+        }
+    }
+}
+
+@mixin make-size($size) {
+    @if type-of($size)=="list" {
+        width: nth($size, 1);
+        @if (length($size) > 1) {
+            height: nth($size, 2);
+        }
+        @else {
+            height: nth($size, 1);
+        }
+    }
+    @else {
+        width: $size;
+        height: $size;
+    }
+}
+
+@mixin get($attrName, $map, $breakpoints: $default-screen-width-breakpoints) {
+    @each $breakpoint, $value in $map {
+        @if $breakpoint == null {
+            #{$attrName}: $value;
+        }
+        @else {
+            @if map-has-key($breakpoints, $breakpoint) {
+                $breakpoint: map-get($breakpoints, $breakpoint);
+            }
+            @media screen and (min-width: $breakpoint) {
+                #{$attrName}: $value;
+            }
+        }
+    }
+}

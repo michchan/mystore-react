@@ -1,58 +1,88 @@
-@import '../../constants/theme.scss';
+@import '../../style/_theme.scss';
+
+$container-heights: (
+    null: 48px,
+    small: 50px,
+    medium: 52px,
+    large: 54px,
+    xlarge: 58px
+);
+
+$input-sizes: (
+    null: (94vw, 32px),
+    small: (95vw, 34px),
+    medium: (96vw, 36px),
+    large: (97vw, 38px),
+    xlarge: (98vw, 40px)
+);
+
+$clear-button-tops: (
+    null: 14px,
+    small: 16px,
+    medium: 15px,
+    large: 16px,
+    xlarge: 16px
+);
+
+$clear-button-sizes: (
+    null: 22px,
+    small: 22px,
+    medium: 24px,
+    large: 25px,
+    xlarge: 26px
+);
 
 .container {
     display: flex;
     width: 100vw;
-    height: 60px;
+    @include get(height, $container-heights);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #fff;
-}
 
-.input {
-    width: 95vw;
-    height: 40px;
-    background-color: $greyBackground;
-    border-radius: 5px;
-    border: 0;
-    text-align: center;
-    color: $darkTextPrimary;
-    font-size: $H5;
-    font-weight: 100;
+    .input {
+        @include size($input-sizes);
+        background-color: $grey-background-color;
+        border-radius: 5px;
+        border: 0;
+        text-align: center;
+        color: $primary-color;
+        font-weight: 100;
+        @include font-size($h5-font-sizes);
+    
+        &::placeholder {
+            color: $grey-text-color;
+            font-family: "FontAwesome", "Open Sans";
+        }
+    }
 
-    &::placeholder {
-        color: $greyTextColor;
-        font-family: "FontAwesome", "Open Sans";
+    .clearButton {
+        @extend .buttonInsideInput;
+        right: 3.5vw;
+    }
+    
+    .searchButton {
+        @extend .buttonInsideInput;
+        left: 3.5vw;
+        top: 11px;
+        width: 35px;
+        height: 35px;
     }
 }
 
 .buttonInsideInput {
     position: absolute;
-    top: 20px;
-    width: 20px;
-    height: 20px;
+    @include get(top, $clear-button-tops);
+    @include size($clear-button-sizes);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: $greyTextColor;
-    font-size: $H3;
+    color: $grey-text-color;
+    @include font-size($h3-font-sizes);
 
     &:hover {
-        color: $darkTextPrimary;
+        color: $primary-color;
     }
-}
-
-.clearButton {
-    @extend .buttonInsideInput;
-    right: 3.5vw;
-}
-
-.searchButton {
-    @extend .buttonInsideInput;
-    left: 3.5vw;
-    top: 11px;
-    width: 35px;
-    height: 35px;
 }

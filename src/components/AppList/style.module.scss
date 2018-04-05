@@ -1,4 +1,12 @@
-@import '../../constants/theme.scss';
+@import '../../style/_theme.scss';
+
+$loading-spinner-size: (
+    null: 34px,
+    small: 36px,
+    medium: 40px,
+    large: 44px,
+    xlarge: 50px
+);
 
 .container {
     display: flex;
@@ -10,13 +18,13 @@
 }
 
 .loadingSpinner {
-    width: 10vw;
+    @include size($loading-spinner-size);
 }
 
 .noResultContainer {
     @extend .container;
 
-    color: $greyTextColor;
-    font-size: $H4;
+    color: $grey-text-color;
+    @include font-size($h4-font-sizes);
     font-weight: 100;
 }

@@ -1,78 +1,196 @@
-@import '../../constants/theme.scss';
+@import '../../style/_theme.scss';
+
+$container-paddings-left: (
+    null: 12px,
+    small: 14px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
+
+$inner-container-paddings-right: (
+    null: 16px,
+    small: 18px,
+    medium: 20px,
+    large: 22px,
+    xlarge: 24px
+);
+
+$app-icon-size: (
+    null: 65px,
+    small: 70px,
+    medium: 80px,
+    large: 90px,
+    xlarge: 100px
+);
+
+$row-vertical-gaps: (
+    null: 12px,
+    small: 14px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
+
+$row-horizontal-gaps: (
+    null: 6px,
+    small: 7px,
+    medium: 8px,
+    large: 9px,
+    xlarge: 10px
+);
+
+$user-rating-margin-right: (
+    null: 3px,
+    small: 4px,
+    medium: 5px,
+    large: 6px,
+    xlarge: 7px
+);
+
+$user-rating-spacings: (
+    null: 1.7px,
+    small: 1.8px,
+    medium: 2px,
+    large: 2.5px,
+    xlarge: 3px
+);
+
+$rating-loading-spinner-size: (
+    null: 14px,
+    small: 15px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
 
 .container {
     background-color: #fff;
     display: flex;
     flex: 1;
     height: 100%;
-    padding-left: 20px;
+    @include get(padding-left, $container-paddings-left);
     cursor: pointer;
 
     &:hover {
-        background-color: $itemHoverColor;
+        background-color: $item-hover-color;
+    }
+
+    .innerContainer {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: $border-width solid $border-color;
+        @include get(padding-right, $inner-container-paddings-right);
+
+        .rowNumber {
+            width: fit-content;
+            @include font-size($h2-font-sizes);
+            color: $grey-text-color;
+            font-weight: 100;
+            @include get(margin-right, $row-vertical-gaps);
+        }
+
+        .appIcon {
+            @include size($app-icon-size);
+            @include get(margin-right, $row-vertical-gaps);
+        }
+        
+        .colRight {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+
+            .appName {
+                color: $primary-color;
+                @include font-size($h3-font-sizes);
+                font-weight: 100;
+            }
+            
+            .appCatName {
+                @include get(padding-top, $row-horizontal-gaps);
+                color: $grey-text-color;
+                @include font-size($h6-font-sizes);
+                font-weight: 100;
+            }
+            
+            .appRatingContainer {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                @include get(padding-top, $row-horizontal-gaps);
+
+                .userRating {
+                    color: $organge-yellow-color;
+                    @include get(padding-right, $user-rating-margin-right);
+                    @include get(letter-spacing, $user-rating-spacings);
+                }
+                
+                .userRatingCount {
+                    color: $grey-text-color;
+                    @include font-size($p-font-sizes);
+                    font-weight: 200;
+                }
+                
+                .loadingSpinner {
+                    @include size($rating-loading-spinner-size);
+                }
+            }
+        }
     }
 }
 
-.innerContainer {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: $borderWidth solid $borderColor;
-    padding-right: 10px;
+/* Classes for react-transition group css transition */
+
+.containerTransition {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
 }
 
-.rowNumber {
-    width: 52px;
-    font-size: $H2;
-    color: $greyTextColor;
-    font-weight: 100;
+.containerTransition-enter {
+    opacity: 0.01;
+    @include translateY(50%);
 }
 
-.appIcon {
-    margin-right: 20px;
+.containerTransition-enter-active {
+    opacity: 1;
+    @include translateY(0%);
+    @include transition(all 300ms ease-out);
 }
 
-.colRight {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
+.containerTransition-exit {
+    opacity: 1;
+    @include translateY(0%);
 }
 
-.appName {
-    color: $darkTextPrimary;
-    font-size: $H3;
-    font-weight: 100;
+.containerTransition-exit-active {
+    opacity: 0.01;
+    @include translateY(50%);
+    @include transition(all 300ms ease-out);
 }
 
-.appCatName {
-    padding-top: 10px;
-    color: $greyTextColor;
-    font-size: $H6;
-    font-weight: 100;
-}
+/* Classes for discarding transition */
 
-.appRatingContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-top: 10px;
+.noTransition {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
 }
-
-.userRating {
-    color: $orangeYellow;
-    padding-right: 5px;
-    letter-spacing: 2px;
+.noTransition-enter {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
 }
-
-.userRatingCount {
-    color: $greyTextColor;
-    font-size: $P;
-    font-weight: 200;
+.noTransition-enter-active {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
 }
-
-.loadingSpinner {
-    width: 20px;
+.noTransition-exit {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
+}
+.noTransition-exit-active {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
 }

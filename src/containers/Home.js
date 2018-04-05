@@ -28,7 +28,8 @@ import {
     homeScrollLeftSelector, 
     homeSearchValueSelector, 
     homeSearchFocusedSelector,
-    homeScrollTopSelector
+    homeScrollTopSelector,
+    homeLastScrollTopSelector
 } from '../selectors';
 
 class HomeContainer extends React.Component {
@@ -83,6 +84,7 @@ const mapStateToProps = (state, ownProps) => ({
     searchValue: homeSearchValueSelector(state),
     isSearchFocused: homeSearchFocusedSelector(state),
     scrollTop: homeScrollTopSelector(state),
+    lastScrollTop: homeLastScrollTopSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

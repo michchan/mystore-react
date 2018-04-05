@@ -1,45 +1,132 @@
 .container {
   display: flex;
   width: 100vw;
-  height: 60px;
+  height: 48px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #fff; }
+  @media screen and (min-width: 480px) {
+    .container {
+      height: 50px; } }
+  @media screen and (min-width: 700px) {
+    .container {
+      height: 52px; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      height: 54px; } }
+  @media screen and (min-width: 1366px) {
+    .container {
+      height: 58px; } }
+  .container .input {
+    width: 94vw;
+    height: 32px;
+    background-color: #E5E5E5;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    color: #333;
+    font-weight: 100;
+    font-size: 1.3rem;
+    line-height: 1.3; }
+    @media screen and (min-width: 480px) {
+      .container .input {
+        width: 95vw;
+        height: 34px; } }
+    @media screen and (min-width: 700px) {
+      .container .input {
+        width: 96vw;
+        height: 36px; } }
+    @media screen and (min-width: 1024px) {
+      .container .input {
+        width: 97vw;
+        height: 38px; } }
+    @media screen and (min-width: 1366px) {
+      .container .input {
+        width: 98vw;
+        height: 40px; } }
+    @media screen and (min-width: 480px) {
+      .container .input {
+        font-size: 1.4rem;
+        line-height: 1.35; } }
+    @media screen and (min-width: 700px) {
+      .container .input {
+        font-size: 1.5rem;
+        line-height: 1.4; } }
+    @media screen and (min-width: 1024px) {
+      .container .input {
+        font-size: 1.6rem;
+        line-height: 1.45; } }
+    @media screen and (min-width: 1366px) {
+      .container .input {
+        font-size: 1.7rem;
+        line-height: 1.5; } }
+    .container .input::placeholder {
+      color: #999;
+      font-family: "FontAwesome", "Open Sans"; }
+  .container .clearButton {
+    right: 3.5vw; }
+  .container .searchButton {
+    left: 3.5vw;
+    top: 11px;
+    width: 35px;
+    height: 35px; }
 
-.input {
-  width: 95vw;
-  height: 40px;
-  background-color: #E5E5E5;
-  border-radius: 5px;
-  border: 0;
-  text-align: center;
-  color: #333;
-  font-size: 16px;
-  font-weight: 100; }
-  .input::placeholder {
-    color: #999;
-    font-family: "FontAwesome", "Open Sans"; }
-
-.buttonInsideInput, .clearButton, .searchButton {
+.buttonInsideInput, .container .clearButton, .container .searchButton {
   position: absolute;
-  top: 20px;
-  width: 20px;
-  height: 20px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #999;
-  font-size: 20px; }
-  .buttonInsideInput:hover, .clearButton:hover, .searchButton:hover {
+  font-size: 1.7rem;
+  line-height: 1.3; }
+  @media screen and (min-width: 480px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      top: 16px; } }
+  @media screen and (min-width: 700px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      top: 15px; } }
+  @media screen and (min-width: 1024px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      top: 16px; } }
+  @media screen and (min-width: 1366px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      top: 16px; } }
+  @media screen and (min-width: 480px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      width: 22px;
+      height: 22px; } }
+  @media screen and (min-width: 700px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      width: 24px;
+      height: 24px; } }
+  @media screen and (min-width: 1024px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      width: 25px;
+      height: 25px; } }
+  @media screen and (min-width: 1366px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      width: 26px;
+      height: 26px; } }
+  @media screen and (min-width: 480px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      font-size: 1.8rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      font-size: 1.9rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      font-size: 2rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .buttonInsideInput, .container .clearButton, .container .searchButton {
+      font-size: 2.1rem;
+      line-height: 1.5; } }
+  .buttonInsideInput:hover, .container .clearButton:hover, .container .searchButton:hover {
     color: #333; }
-
-.clearButton {
-  right: 3.5vw; }
-
-.searchButton {
-  left: 3.5vw;
-  top: 11px;
-  width: 35px;
-  height: 35px; }

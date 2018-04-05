@@ -1,4 +1,8 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+html {
+  font-size: 62.5%;
+  /* =10px, as root font size is 16px */ }
+
 body {
   margin: 0;
   padding: 0;

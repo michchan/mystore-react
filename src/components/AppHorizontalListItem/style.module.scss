@@ -1,40 +1,81 @@
-@import '../../constants/theme.scss';
+@import '../../style/_theme.scss';
+
+$container-widths: (
+    null: 100px,
+    small: 110px,
+    medium: 120px,
+    large: 130px,
+    xlarge: 140px
+);
+
+$container-paddings: (
+    null: 5px 0px 5px 0px,
+    small: 6px 0px 6px 0px,
+    medium: 8px 0px 8px 0px,
+    large: 9px 0px 9px 0px,
+    xlarge: 10px 0px 10px 0px,
+);
+
+$app-icon-sizes: (
+    null: 85px,
+    small: 90px,
+    medium: 100px,
+    large: 110px,
+    xlarge: 120px
+);
+
+$app-name-paddings: (
+    null: 8px 6px 0px 6px,
+    small: 9px 7px 0px 7px,
+    medium: 10px 8px 0px 8px,
+    large: 11px 9px 0px 9px,
+    xlarge: 12px 10px 0px 10px
+);
+
+$app-cat-name-paddings: (
+    null: 4px 6px 0px 6px,
+    small: 4px 7px 0px 7px,
+    medium: 5px 8px 0px 8px,
+    large: 5px 9px 0px 9px,
+    xlarge: 6px 10px 0px 10px
+);
 
 .container {
     display: flex;
     flex: 0 0 auto;
-    width: 140px;
-    height: 240px;
+    height: 100%;
+    @include get(width, $container-widths);
+    @include get(padding, $container-paddings);
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     background-color: #fff;
-    padding: 10px 0px 10px 0px;
     cursor: pointer;
 
     &:hover {
-        background-color: $itemHoverColor;
+        background-color: $item-hover-color;
     }
-}
 
-.appIcon {
-    width: 120px;
-    height: 120px;
-    border-radius: 30px;
-}
-
-.appName {
-    width: 120px;
-    padding: 12px 10px 0px 10px;
-    color: $darkTextPrimary;
-    font-size: $H5;
-    font-weight: 200;
-}
-
-.appCatName {
-    width: 120px;
-    padding: 6px 10px 0px 10px;
-    color: $greyTextColor;
-    font-size: $H6;
-    font-weight: 100;
+    .appIcon {
+        border-radius: 25%;
+        @include size($app-icon-sizes);
+    }
+    
+    .appName {
+        display: flex;
+        align-self: flex-start;
+        color: $primary-color;
+        font-weight: 200;
+        @include font-size($h5-font-sizes);
+        @include get(padding, $app-name-paddings);
+    }
+    
+    .appCatName {
+        display: flex;
+        align-self: flex-start;
+        color: $grey-text-color;
+        font-weight: 100;
+        @include font-size($h6-font-sizes);
+        @include get(padding, $app-cat-name-paddings);
+    }
 }
