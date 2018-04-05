@@ -1,20 +1,3 @@
-// Colors
-$primaryColor: #333;
-$borderColor: #EAEAEA;
-$itemHoverColor: #F7F7F7;
-$darkTextPrimary: #333;
-$greyTextColor: #999;
-$greyBackground: #E5E5E5;
-$orangeYellow: #f4a338;
-
-// Layout, size
-$borderWidth: 0.8px;
-
-// Font size
-$H1: 28px;
-$H2: 24px;
-$H3: 20px;
-$H4: 18px;
-$H5: 16px;
-$H6: 14px;
-$P: 12px;
+@import './color.scss';
+@import './font-size.scss';
+@import './layout.scss';

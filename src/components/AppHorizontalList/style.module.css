@@ -11,7 +11,7 @@
 
 .listTitle {
   padding: 20px 20px 10px 20px;
-  font-size: 20px;
+  font-size: 2rem;
   color: #333; }
 
 .listContainer {
@@ -33,6 +33,6 @@
 .noResultText {
   width: 100vw;
   color: #999;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 100;
   text-align: center; }

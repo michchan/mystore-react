@@ -15,7 +15,7 @@
   border: 0;
   text-align: center;
   color: #333;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 100; }
   .input::placeholder {
     color: #999;
@@ -31,7 +31,7 @@
   justify-content: center;
   cursor: pointer;
   color: #999;
-  font-size: 20px; }
+  font-size: 2rem; }
   .buttonInsideInput:hover, .clearButton:hover, .searchButton:hover {
     color: #333; }
 
