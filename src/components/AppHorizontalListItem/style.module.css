@@ -1,66 +1,129 @@
 .container {
   display: flex;
   flex: 0 0 auto;
-  width: 140px;
-  height: 240px;
+  height: 100%;
+  width: 100px;
+  padding: 5px 0px 5px 0px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  padding: 10px 0px 10px 0px;
   cursor: pointer; }
+  @media screen and (min-width: 480px) {
+    .container {
+      width: 110px; } }
+  @media screen and (min-width: 700px) {
+    .container {
+      width: 120px; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      width: 130px; } }
+  @media screen and (min-width: 1366px) {
+    .container {
+      width: 140px; } }
+  @media screen and (min-width: 480px) {
+    .container {
+      padding: 6px 0px 6px 0px; } }
+  @media screen and (min-width: 700px) {
+    .container {
+      padding: 8px 0px 8px 0px; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      padding: 9px 0px 9px 0px; } }
+  @media screen and (min-width: 1366px) {
+    .container {
+      padding: 10px 0px 10px 0px; } }
   .container:hover {
     background-color: #F7F7F7; }
-
-.appIcon {
-  width: 120px;
-  height: 120px;
-  border-radius: 30px; }
-
-.appName {
-  width: 120px;
-  padding: 12px 10px 0px 10px;
-  color: #333;
-  font-size: 1.3rem;
-  line-height: 1.3;
-  font-weight: 200; }
-  @media screen and (min-width: 480px) {
-    .appName {
-      font-size: 1.4rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .appName {
-      font-size: 1.5rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .appName {
-      font-size: 1.6rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .appName {
-      font-size: 1.7rem;
-      line-height: 1.5; } }
-
-.appCatName {
-  width: 120px;
-  padding: 6px 10px 0px 10px;
-  color: #999;
-  font-size: 1.2rem;
-  line-height: 1.3;
-  font-weight: 100; }
-  @media screen and (min-width: 480px) {
-    .appCatName {
-      font-size: 1.3rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .appCatName {
-      font-size: 1.4rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .appCatName {
-      font-size: 1.4rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .appCatName {
-      font-size: 1.5rem;
-      line-height: 1.5; } }
+  .container .appIcon {
+    border-radius: 25%;
+    width: 85px;
+    height: 85px; }
+    @media screen and (min-width: 480px) {
+      .container .appIcon {
+        width: 90px;
+        height: 90px; } }
+    @media screen and (min-width: 700px) {
+      .container .appIcon {
+        width: 100px;
+        height: 100px; } }
+    @media screen and (min-width: 1024px) {
+      .container .appIcon {
+        width: 110px;
+        height: 110px; } }
+    @media screen and (min-width: 1366px) {
+      .container .appIcon {
+        width: 120px;
+        height: 120px; } }
+  .container .appName {
+    display: flex;
+    align-self: flex-start;
+    color: #333;
+    font-weight: 200;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    padding: 8px 6px 0px 6px; }
+    @media screen and (min-width: 480px) {
+      .container .appName {
+        font-size: 1.4rem;
+        line-height: 1.35; } }
+    @media screen and (min-width: 700px) {
+      .container .appName {
+        font-size: 1.5rem;
+        line-height: 1.4; } }
+    @media screen and (min-width: 1024px) {
+      .container .appName {
+        font-size: 1.6rem;
+        line-height: 1.45; } }
+    @media screen and (min-width: 1366px) {
+      .container .appName {
+        font-size: 1.7rem;
+        line-height: 1.5; } }
+    @media screen and (min-width: 480px) {
+      .container .appName {
+        padding: 9px 7px 0px 7px; } }
+    @media screen and (min-width: 700px) {
+      .container .appName {
+        padding: 10px 8px 0px 8px; } }
+    @media screen and (min-width: 1024px) {
+      .container .appName {
+        padding: 11px 9px 0px 9px; } }
+    @media screen and (min-width: 1366px) {
+      .container .appName {
+        padding: 12px 10px 0px 10px; } }
+  .container .appCatName {
+    display: flex;
+    align-self: flex-start;
+    color: #999;
+    font-weight: 100;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    padding: 4px 6px 0px 6px; }
+    @media screen and (min-width: 480px) {
+      .container .appCatName {
+        font-size: 1.3rem;
+        line-height: 1.35; } }
+    @media screen and (min-width: 700px) {
+      .container .appCatName {
+        font-size: 1.4rem;
+        line-height: 1.4; } }
+    @media screen and (min-width: 1024px) {
+      .container .appCatName {
+        font-size: 1.4rem;
+        line-height: 1.45; } }
+    @media screen and (min-width: 1366px) {
+      .container .appCatName {
+        font-size: 1.5rem;
+        line-height: 1.5; } }
+    @media screen and (min-width: 480px) {
+      .container .appCatName {
+        padding: 4px 7px 0px 7px; } }
+    @media screen and (min-width: 700px) {
+      .container .appCatName {
+        padding: 5px 8px 0px 8px; } }
+    @media screen and (min-width: 1024px) {
+      .container .appCatName {
+        padding: 5px 9px 0px 9px; } }
+    @media screen and (min-width: 1366px) {
+      .container .appCatName {
+        padding: 6px 10px 0px 10px; } }

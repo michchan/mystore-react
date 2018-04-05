@@ -21,7 +21,7 @@ export const AppListItem = (props = {}) => {
     const appCatName = data[fields.CATEGORY_LABEL];
     const appIconSrc = data[fields.ICON_100];
     const appIconHeight = data[fields.ICON_100_HEIGHT];
-    const appIconBorderRadius = isEvenRow ? appIconHeight / 2 : appIconHeight / 4;
+    const appIconBorderRadius = isEvenRow ? '50%' : '25%'; // App icon should be cropped round for odd rows and circle for even rows
     const userRating = data[fields.AVG_USER_RATING];
     const userRatingCount = data[fields.USER_RATING_COUNT];
     
@@ -31,8 +31,6 @@ export const AppListItem = (props = {}) => {
                 <div className={styles.rowNumber}>{ rowNumber }</div>
 
                 <img src={appIconSrc} alt="icon" className={styles.appIcon} style={{
-                    width: appIconHeight,
-                    height: appIconHeight,
                     borderRadius: appIconBorderRadius,
                 }}/>
 

@@ -3,129 +3,251 @@
   display: flex;
   flex: 1;
   height: 100%;
-  padding-left: 20px;
+  padding-left: 12px;
   cursor: pointer; }
+  @media screen and (min-width: 480px) {
+    .container {
+      padding-left: 14px; } }
+  @media screen and (min-width: 700px) {
+    .container {
+      padding-left: 16px; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      padding-left: 18px; } }
+  @media screen and (min-width: 1366px) {
+    .container {
+      padding-left: 20px; } }
   .container:hover {
     background-color: #F7F7F7; }
-
-.innerContainer {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: 0.8px solid #EAEAEA;
-  padding-right: 10px; }
-
-.rowNumber {
-  width: 52px;
-  font-size: 2.1rem;
-  line-height: 1.3;
-  color: #999;
-  font-weight: 100; }
-  @media screen and (min-width: 480px) {
-    .rowNumber {
-      font-size: 2.2rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .rowNumber {
-      font-size: 2.3rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .rowNumber {
-      font-size: 2.4rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .rowNumber {
-      font-size: 2.5rem;
-      line-height: 1.5; } }
-
-.appIcon {
-  margin-right: 20px; }
-
-.colRight {
-  display: flex;
-  flex: 1;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center; }
-
-.appName {
-  color: #333;
-  font-size: 1.7rem;
-  line-height: 1.3;
-  font-weight: 100; }
-  @media screen and (min-width: 480px) {
-    .appName {
-      font-size: 1.8rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .appName {
-      font-size: 1.9rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .appName {
-      font-size: 2rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .appName {
+  .container .innerContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 0.8px solid #EAEAEA;
+    padding-right: 16px; }
+    @media screen and (min-width: 480px) {
+      .container .innerContainer {
+        padding-right: 18px; } }
+    @media screen and (min-width: 700px) {
+      .container .innerContainer {
+        padding-right: 20px; } }
+    @media screen and (min-width: 1024px) {
+      .container .innerContainer {
+        padding-right: 22px; } }
+    @media screen and (min-width: 1366px) {
+      .container .innerContainer {
+        padding-right: 24px; } }
+    .container .innerContainer .rowNumber {
+      width: fit-content;
       font-size: 2.1rem;
-      line-height: 1.5; } }
-
-.appCatName {
-  padding-top: 10px;
-  color: #999;
-  font-size: 1.2rem;
-  line-height: 1.3;
-  font-weight: 100; }
-  @media screen and (min-width: 480px) {
-    .appCatName {
-      font-size: 1.3rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .appCatName {
-      font-size: 1.4rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .appCatName {
-      font-size: 1.4rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .appCatName {
-      font-size: 1.5rem;
-      line-height: 1.5; } }
-
-.appRatingContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-top: 10px; }
-
-.userRating {
-  color: #f4a338;
-  padding-right: 5px;
-  letter-spacing: 2px; }
-
-.userRatingCount {
-  color: #999;
-  font-size: 1.1rem;
-  line-height: 1.3;
-  font-weight: 200; }
-  @media screen and (min-width: 480px) {
-    .userRatingCount {
-      font-size: 1.1rem;
-      line-height: 1.35; } }
-  @media screen and (min-width: 700px) {
-    .userRatingCount {
-      font-size: 1.2rem;
-      line-height: 1.4; } }
-  @media screen and (min-width: 1024px) {
-    .userRatingCount {
-      font-size: 1.2rem;
-      line-height: 1.45; } }
-  @media screen and (min-width: 1366px) {
-    .userRatingCount {
-      font-size: 1.3rem;
-      line-height: 1.5; } }
-
-.loadingSpinner {
-  width: 20px; }
+      line-height: 1.3;
+      color: #999;
+      font-weight: 100;
+      margin-right: 12px; }
+      @media screen and (min-width: 480px) {
+        .container .innerContainer .rowNumber {
+          font-size: 2.2rem;
+          line-height: 1.35; } }
+      @media screen and (min-width: 700px) {
+        .container .innerContainer .rowNumber {
+          font-size: 2.3rem;
+          line-height: 1.4; } }
+      @media screen and (min-width: 1024px) {
+        .container .innerContainer .rowNumber {
+          font-size: 2.4rem;
+          line-height: 1.45; } }
+      @media screen and (min-width: 1366px) {
+        .container .innerContainer .rowNumber {
+          font-size: 2.5rem;
+          line-height: 1.5; } }
+      @media screen and (min-width: 480px) {
+        .container .innerContainer .rowNumber {
+          margin-right: 14px; } }
+      @media screen and (min-width: 700px) {
+        .container .innerContainer .rowNumber {
+          margin-right: 16px; } }
+      @media screen and (min-width: 1024px) {
+        .container .innerContainer .rowNumber {
+          margin-right: 18px; } }
+      @media screen and (min-width: 1366px) {
+        .container .innerContainer .rowNumber {
+          margin-right: 20px; } }
+    .container .innerContainer .appIcon {
+      width: 65px;
+      height: 65px;
+      margin-right: 12px; }
+      @media screen and (min-width: 480px) {
+        .container .innerContainer .appIcon {
+          width: 70px;
+          height: 70px; } }
+      @media screen and (min-width: 700px) {
+        .container .innerContainer .appIcon {
+          width: 80px;
+          height: 80px; } }
+      @media screen and (min-width: 1024px) {
+        .container .innerContainer .appIcon {
+          width: 90px;
+          height: 90px; } }
+      @media screen and (min-width: 1366px) {
+        .container .innerContainer .appIcon {
+          width: 100px;
+          height: 100px; } }
+      @media screen and (min-width: 480px) {
+        .container .innerContainer .appIcon {
+          margin-right: 14px; } }
+      @media screen and (min-width: 700px) {
+        .container .innerContainer .appIcon {
+          margin-right: 16px; } }
+      @media screen and (min-width: 1024px) {
+        .container .innerContainer .appIcon {
+          margin-right: 18px; } }
+      @media screen and (min-width: 1366px) {
+        .container .innerContainer .appIcon {
+          margin-right: 20px; } }
+    .container .innerContainer .colRight {
+      display: flex;
+      flex: 1;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center; }
+      .container .innerContainer .colRight .appName {
+        color: #333;
+        font-size: 1.7rem;
+        line-height: 1.3;
+        font-weight: 100; }
+        @media screen and (min-width: 480px) {
+          .container .innerContainer .colRight .appName {
+            font-size: 1.8rem;
+            line-height: 1.35; } }
+        @media screen and (min-width: 700px) {
+          .container .innerContainer .colRight .appName {
+            font-size: 1.9rem;
+            line-height: 1.4; } }
+        @media screen and (min-width: 1024px) {
+          .container .innerContainer .colRight .appName {
+            font-size: 2rem;
+            line-height: 1.45; } }
+        @media screen and (min-width: 1366px) {
+          .container .innerContainer .colRight .appName {
+            font-size: 2.1rem;
+            line-height: 1.5; } }
+      .container .innerContainer .colRight .appCatName {
+        padding-top: 6px;
+        color: #999;
+        font-size: 1.2rem;
+        line-height: 1.3;
+        font-weight: 100; }
+        @media screen and (min-width: 480px) {
+          .container .innerContainer .colRight .appCatName {
+            padding-top: 7px; } }
+        @media screen and (min-width: 700px) {
+          .container .innerContainer .colRight .appCatName {
+            padding-top: 8px; } }
+        @media screen and (min-width: 1024px) {
+          .container .innerContainer .colRight .appCatName {
+            padding-top: 9px; } }
+        @media screen and (min-width: 1366px) {
+          .container .innerContainer .colRight .appCatName {
+            padding-top: 10px; } }
+        @media screen and (min-width: 480px) {
+          .container .innerContainer .colRight .appCatName {
+            font-size: 1.3rem;
+            line-height: 1.35; } }
+        @media screen and (min-width: 700px) {
+          .container .innerContainer .colRight .appCatName {
+            font-size: 1.4rem;
+            line-height: 1.4; } }
+        @media screen and (min-width: 1024px) {
+          .container .innerContainer .colRight .appCatName {
+            font-size: 1.4rem;
+            line-height: 1.45; } }
+        @media screen and (min-width: 1366px) {
+          .container .innerContainer .colRight .appCatName {
+            font-size: 1.5rem;
+            line-height: 1.5; } }
+      .container .innerContainer .colRight .appRatingContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 6px; }
+        @media screen and (min-width: 480px) {
+          .container .innerContainer .colRight .appRatingContainer {
+            padding-top: 7px; } }
+        @media screen and (min-width: 700px) {
+          .container .innerContainer .colRight .appRatingContainer {
+            padding-top: 8px; } }
+        @media screen and (min-width: 1024px) {
+          .container .innerContainer .colRight .appRatingContainer {
+            padding-top: 9px; } }
+        @media screen and (min-width: 1366px) {
+          .container .innerContainer .colRight .appRatingContainer {
+            padding-top: 10px; } }
+        .container .innerContainer .colRight .appRatingContainer .userRating {
+          color: #f4a338;
+          padding-right: 3px;
+          letter-spacing: 1.7px; }
+          @media screen and (min-width: 480px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              padding-right: 4px; } }
+          @media screen and (min-width: 700px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              padding-right: 5px; } }
+          @media screen and (min-width: 1024px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              padding-right: 6px; } }
+          @media screen and (min-width: 1366px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              padding-right: 7px; } }
+          @media screen and (min-width: 480px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              letter-spacing: 1.8px; } }
+          @media screen and (min-width: 700px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              letter-spacing: 2px; } }
+          @media screen and (min-width: 1024px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              letter-spacing: 2.5px; } }
+          @media screen and (min-width: 1366px) {
+            .container .innerContainer .colRight .appRatingContainer .userRating {
+              letter-spacing: 3px; } }
+        .container .innerContainer .colRight .appRatingContainer .userRatingCount {
+          color: #999;
+          font-size: 1.1rem;
+          line-height: 1.3;
+          font-weight: 200; }
+          @media screen and (min-width: 480px) {
+            .container .innerContainer .colRight .appRatingContainer .userRatingCount {
+              font-size: 1.1rem;
+              line-height: 1.35; } }
+          @media screen and (min-width: 700px) {
+            .container .innerContainer .colRight .appRatingContainer .userRatingCount {
+              font-size: 1.2rem;
+              line-height: 1.4; } }
+          @media screen and (min-width: 1024px) {
+            .container .innerContainer .colRight .appRatingContainer .userRatingCount {
+              font-size: 1.2rem;
+              line-height: 1.45; } }
+          @media screen and (min-width: 1366px) {
+            .container .innerContainer .colRight .appRatingContainer .userRatingCount {
+              font-size: 1.3rem;
+              line-height: 1.5; } }
+        .container .innerContainer .colRight .appRatingContainer .loadingSpinner {
+          width: 14px;
+          height: 14px; }
+          @media screen and (min-width: 480px) {
+            .container .innerContainer .colRight .appRatingContainer .loadingSpinner {
+              width: 15px;
+              height: 15px; } }
+          @media screen and (min-width: 700px) {
+            .container .innerContainer .colRight .appRatingContainer .loadingSpinner {
+              width: 16px;
+              height: 16px; } }
+          @media screen and (min-width: 1024px) {
+            .container .innerContainer .colRight .appRatingContainer .loadingSpinner {
+              width: 18px;
+              height: 18px; } }
+          @media screen and (min-width: 1366px) {
+            .container .innerContainer .colRight .appRatingContainer .loadingSpinner {
+              width: 20px;
+              height: 20px; } }

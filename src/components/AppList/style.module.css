@@ -7,7 +7,24 @@
   background-color: #fff; }
 
 .loadingSpinner {
-  width: 10vw; }
+  width: 34px;
+  height: 34px; }
+  @media screen and (min-width: 480px) {
+    .loadingSpinner {
+      width: 36px;
+      height: 36px; } }
+  @media screen and (min-width: 700px) {
+    .loadingSpinner {
+      width: 40px;
+      height: 40px; } }
+  @media screen and (min-width: 1024px) {
+    .loadingSpinner {
+      width: 44px;
+      height: 44px; } }
+  @media screen and (min-width: 1366px) {
+    .loadingSpinner {
+      width: 50px;
+      height: 50px; } }
 
 .noResultContainer {
   color: #999;

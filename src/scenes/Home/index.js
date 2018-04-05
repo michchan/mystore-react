@@ -54,16 +54,18 @@ export const HomeScene = (props = {}) => {
                 handleOnScroll={handleOnHorizontalScroll}
             />
 
-            <AppList 
-                data={topFreeApps} 
-                loadMoreRows={fetchTopFreeApps} 
-                appLookUpLoading={appLookUpLoading}
-                loadingMore={loadingMore}
-                headerHeight={380}
-                handleOnScroll={scrollHorizontal}
-                isFiltered={!!searchValue}
-                scrollTop={scrollTop}
-            />
+            <div className={styles.listContainer}>
+                <AppList 
+                    data={topFreeApps} 
+                    loadMoreRows={fetchTopFreeApps} 
+                    appLookUpLoading={appLookUpLoading}
+                    loadingMore={loadingMore}
+                    headerHeight={370}
+                    handleOnScroll={scrollHorizontal}
+                    isFiltered={!!searchValue}
+                    scrollTop={scrollTop}
+                />
+            </div>
         </div>
     );
 };

@@ -1,78 +1,144 @@
 @import '../../style/_theme.scss';
 
+$container-paddings-left: (
+    null: 12px,
+    small: 14px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
+
+$inner-container-paddings-right: (
+    null: 16px,
+    small: 18px,
+    medium: 20px,
+    large: 22px,
+    xlarge: 24px
+);
+
+$app-icon-size: (
+    null: 65px,
+    small: 70px,
+    medium: 80px,
+    large: 90px,
+    xlarge: 100px
+);
+
+$row-vertical-gaps: (
+    null: 12px,
+    small: 14px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
+
+$row-horizontal-gaps: (
+    null: 6px,
+    small: 7px,
+    medium: 8px,
+    large: 9px,
+    xlarge: 10px
+);
+
+$user-rating-margin-right: (
+    null: 3px,
+    small: 4px,
+    medium: 5px,
+    large: 6px,
+    xlarge: 7px
+);
+
+$user-rating-spacings: (
+    null: 1.7px,
+    small: 1.8px,
+    medium: 2px,
+    large: 2.5px,
+    xlarge: 3px
+);
+
+$rating-loading-spinner-size: (
+    null: 14px,
+    small: 15px,
+    medium: 16px,
+    large: 18px,
+    xlarge: 20px
+);
+
 .container {
     background-color: #fff;
     display: flex;
     flex: 1;
     height: 100%;
-    padding-left: 20px;
+    @include get(padding-left, $container-paddings-left);
     cursor: pointer;
 
     &:hover {
         background-color: $item-hover-color;
     }
-}
 
-.innerContainer {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: $border-width solid $border-color;
-    padding-right: 10px;
-}
+    .innerContainer {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: $border-width solid $border-color;
+        @include get(padding-right, $inner-container-paddings-right);
 
-.rowNumber {
-    width: 52px;
-    @include font-size($h2-font-sizes);
-    color: $grey-text-color;
-    font-weight: 100;
-}
+        .rowNumber {
+            width: fit-content;
+            @include font-size($h2-font-sizes);
+            color: $grey-text-color;
+            font-weight: 100;
+            @include get(margin-right, $row-vertical-gaps);
+        }
 
-.appIcon {
-    margin-right: 20px;
-}
+        .appIcon {
+            @include size($app-icon-size);
+            @include get(margin-right, $row-vertical-gaps);
+        }
+        
+        .colRight {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
 
-.colRight {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-}
+            .appName {
+                color: $primary-color;
+                @include font-size($h3-font-sizes);
+                font-weight: 100;
+            }
+            
+            .appCatName {
+                @include get(padding-top, $row-horizontal-gaps);
+                color: $grey-text-color;
+                @include font-size($h6-font-sizes);
+                font-weight: 100;
+            }
+            
+            .appRatingContainer {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                @include get(padding-top, $row-horizontal-gaps);
 
-.appName {
-    color: $primary-color;
-    @include font-size($h3-font-sizes);
-    font-weight: 100;
-}
-
-.appCatName {
-    padding-top: 10px;
-    color: $grey-text-color;
-    @include font-size($h6-font-sizes);
-    font-weight: 100;
-}
-
-.appRatingContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.userRating {
-    color: $organge-yellow-color;
-    padding-right: 5px;
-    letter-spacing: 2px;
-}
-
-.userRatingCount {
-    color: $grey-text-color;
-    @include font-size($p-font-sizes);
-    font-weight: 200;
-}
-
-.loadingSpinner {
-    width: 20px;
+                .userRating {
+                    color: $organge-yellow-color;
+                    @include get(padding-right, $user-rating-margin-right);
+                    @include get(letter-spacing, $user-rating-spacings);
+                }
+                
+                .userRatingCount {
+                    color: $grey-text-color;
+                    @include font-size($p-font-sizes);
+                    font-weight: 200;
+                }
+                
+                .loadingSpinner {
+                    @include size($rating-loading-spinner-size);
+                }
+            }
+        }
+    }
 }

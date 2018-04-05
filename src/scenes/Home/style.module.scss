@@ -1,14 +1,25 @@
 @import '../../style/_theme.scss'; 
 
+$loading-spinner-size: (
+    null: 54px,
+    small: 56px,
+    medium: 62px,
+    large: 68px,
+    xlarge: 76px
+);
+
 .container {
     display: flex;
     flex: 1;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    background-color: #fff;
     height: 100vh;
+    background-color: #fff;
     overflow: hidden;
+    
+    .listContainer {
+        display: flex;
+        flex: 1;
+    }
 }
 
 .loadingContainer {
@@ -19,5 +30,5 @@
 }
 
 .loadingSpinner {
-    width: 15vw;
+    @include size($loading-spinner-size);
 }

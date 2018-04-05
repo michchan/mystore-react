@@ -1,5 +1,13 @@
 @import '../../style/_theme.scss';
 
+$loading-spinner-size: (
+    null: 34px,
+    small: 36px,
+    medium: 40px,
+    large: 44px,
+    xlarge: 50px
+);
+
 .container {
     display: flex;
     flex: 1;
@@ -10,7 +18,7 @@
 }
 
 .loadingSpinner {
-    width: 10vw;
+    @include size($loading-spinner-size);
 }
 
 .noResultContainer {
