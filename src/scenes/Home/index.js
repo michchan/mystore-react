@@ -25,6 +25,7 @@ export const HomeScene = (props = {}) => {
         onSearchBlur,
         isSearchFocused,
         scrollTop,
+        lastScrollTop,
     } = props;
 
     if (appLoading)
@@ -60,10 +61,10 @@ export const HomeScene = (props = {}) => {
                     loadMoreRows={fetchTopFreeApps} 
                     appLookUpLoading={appLookUpLoading}
                     loadingMore={loadingMore}
-                    headerHeight={370}
                     handleOnScroll={scrollHorizontal}
                     isFiltered={!!searchValue}
                     scrollTop={scrollTop}
+                    lastScrollTop={lastScrollTop}
                 />
             </div>
         </div>
@@ -95,6 +96,7 @@ HomeScene.propTypes = {
     scrollLeft: PropTypes.number.isRequired,
     searchValue: PropTypes.string.isRequired,
     scrollTop: PropTypes.number.isRequired,
+    lastScrollTop: PropTypes.number.isRequired,
 };
 
 export default HomeScene;

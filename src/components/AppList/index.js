@@ -9,19 +9,22 @@ const _isRowLoaded = ({ index }, data) => {
     return !!data[index];
 }
 
-const _rowRenderer = ({
-    index, 
-    key, 
-    style, 
-    isScrolling,
-    isVisible,
-    parent,
-}, props) => {
+const _rowRenderer = (rowProps, props) => {
+    const {
+        index, 
+        key, 
+        style, 
+        isScrolling,
+        isVisible,
+        parent,
+    } = rowProps;
     const { 
         data, 
         loadingMore,
         appLookUpLoading,
         isFiltered,
+        scrollTop,
+        lastScrollTop,
     } = props;
 
     const isExtrudedItem = index === data.length;  
@@ -40,11 +43,12 @@ const _rowRenderer = ({
 
     return (
         <AppListItem 
-            key={key} 
-            style={style}
+            {...rowProps}
             data={item}
             index={index}
             appLookUpLoading={props.appLookUpLoading}
+            scrollTop={scrollTop}
+            lastScrollTop={lastScrollTop}
         />
     );
 }
@@ -139,6 +143,7 @@ AppList.propTypes = {
     loadingMore: PropTypes.bool.isRequired,
     isFiltered: PropTypes.bool.isRequired,
     scrollTop: PropTypes.number.isRequired,
+    lastScrollTop: PropTypes.number.isRequired,
     headerHeight: PropTypes.number,
     pageSize: PropTypes.number,
 };
