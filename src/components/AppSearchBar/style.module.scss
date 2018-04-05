@@ -13,16 +13,16 @@
 .input {
     width: 95vw;
     height: 40px;
-    background-color: $greyBackground;
+    background-color: $grey-background-color;
     border-radius: 5px;
     border: 0;
     text-align: center;
-    color: $darkTextPrimary;
+    color: $primary-color;
     @include font-size($h5-font-sizes);
     font-weight: 100;
 
     &::placeholder {
-        color: $greyTextColor;
+        color: $grey-text-color;
         font-family: "FontAwesome", "Open Sans";
     }
 }
@@ -36,11 +36,11 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($h3-font-sizes);
 
     &:hover {
-        color: $darkTextPrimary;
+        color: $primary-color;
     }
 }
 

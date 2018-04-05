@@ -13,7 +13,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $itemHoverColor;
+        background-color: $item-hover-color;
     }
 }
 
@@ -26,7 +26,7 @@
 .appName {
     width: 120px;
     padding: 12px 10px 0px 10px;
-    color: $darkTextPrimary;
+    color: $primary-color;
     @include font-size($h5-font-sizes);
     font-weight: 200;
 }
@@ -34,7 +34,7 @@
 .appCatName {
     width: 120px;
     padding: 6px 10px 0px 10px;
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($h6-font-sizes);
     font-weight: 100;
 }

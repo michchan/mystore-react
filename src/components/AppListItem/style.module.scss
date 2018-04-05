@@ -9,7 +9,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $itemHoverColor;
+        background-color: $item-hover-color;
     }
 }
 
@@ -18,14 +18,14 @@
     flex: 1;
     flex-direction: row;
     align-items: center;
-    border-bottom: $borderWidth solid $borderColor;
+    border-bottom: $border-width solid $border-color;
     padding-right: 10px;
 }
 
 .rowNumber {
     width: 52px;
     @include font-size($h2-font-sizes);
-    color: $greyTextColor;
+    color: $grey-text-color;
     font-weight: 100;
 }
 
@@ -42,14 +42,14 @@
 }
 
 .appName {
-    color: $darkTextPrimary;
+    color: $primary-color;
     @include font-size($h3-font-sizes);
     font-weight: 100;
 }
 
 .appCatName {
     padding-top: 10px;
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($h6-font-sizes);
     font-weight: 100;
 }
@@ -62,13 +62,13 @@
 }
 
 .userRating {
-    color: $orangeYellow;
+    color: $organge-yellow-color;
     padding-right: 5px;
     letter-spacing: 2px;
 }
 
 .userRatingCount {
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($p-font-sizes);
     font-weight: 200;
 }

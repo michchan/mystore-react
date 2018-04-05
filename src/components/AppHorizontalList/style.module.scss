@@ -8,14 +8,14 @@
     align-items: flex-start;
     justify-content: flex-start;
     background-color: #fff;
-    border-top: 1px solid $borderColor;
-    border-bottom: 1px solid $borderColor;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
 }
 
 .listTitle {
     padding: 20px 20px 10px 20px;
     @include font-size($h3-font-sizes);
-    color: $darkTextPrimary;
+    color: $primary-color;
 }
 
 .listContainer {
@@ -38,7 +38,7 @@
 
 .noResultText {
     width: 100vw;
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($h4-font-sizes);
     font-weight: 100;
     text-align: center;

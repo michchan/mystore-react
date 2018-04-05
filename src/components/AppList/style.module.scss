@@ -16,7 +16,7 @@
 .noResultContainer {
     @extend .container;
 
-    color: $greyTextColor;
+    color: $grey-text-color;
     @include font-size($h4-font-sizes);
     font-weight: 100;
 }
