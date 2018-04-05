@@ -11,5 +11,22 @@
 
 .noResultContainer {
   color: #999;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .noResultContainer {
+      font-size: 1.6rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .noResultContainer {
+      font-size: 1.7rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .noResultContainer {
+      font-size: 1.8rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .noResultContainer {
+      font-size: 1.9rem;
+      line-height: 1.5; } }

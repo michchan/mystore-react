@@ -21,12 +21,46 @@
   width: 120px;
   padding: 12px 10px 0px 10px;
   color: #333;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
   font-weight: 200; }
+  @media screen and (min-width: 480px) {
+    .appName {
+      font-size: 1.4rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .appName {
+      font-size: 1.5rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .appName {
+      font-size: 1.6rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .appName {
+      font-size: 1.7rem;
+      line-height: 1.5; } }
 
 .appCatName {
   width: 120px;
   padding: 6px 10px 0px 10px;
   color: #999;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.3;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .appCatName {
+      font-size: 1.3rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .appCatName {
+      font-size: 1.4rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .appCatName {
+      font-size: 1.4rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .appCatName {
+      font-size: 1.5rem;
+      line-height: 1.5; } }

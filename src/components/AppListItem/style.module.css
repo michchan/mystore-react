@@ -18,9 +18,26 @@
 
 .rowNumber {
   width: 52px;
-  font-size: 2.4rem;
+  font-size: 2.1rem;
+  line-height: 1.3;
   color: #999;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .rowNumber {
+      font-size: 2.2rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .rowNumber {
+      font-size: 2.3rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .rowNumber {
+      font-size: 2.4rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .rowNumber {
+      font-size: 2.5rem;
+      line-height: 1.5; } }
 
 .appIcon {
   margin-right: 20px; }
@@ -34,14 +51,48 @@
 
 .appName {
   color: #333;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  line-height: 1.3;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .appName {
+      font-size: 1.8rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .appName {
+      font-size: 1.9rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .appName {
+      font-size: 2rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .appName {
+      font-size: 2.1rem;
+      line-height: 1.5; } }
 
 .appCatName {
   padding-top: 10px;
   color: #999;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.3;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .appCatName {
+      font-size: 1.3rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .appCatName {
+      font-size: 1.4rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .appCatName {
+      font-size: 1.4rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .appCatName {
+      font-size: 1.5rem;
+      line-height: 1.5; } }
 
 .appRatingContainer {
   display: flex;
@@ -56,8 +107,25 @@
 
 .userRatingCount {
   color: #999;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.3;
   font-weight: 200; }
+  @media screen and (min-width: 480px) {
+    .userRatingCount {
+      font-size: 1.1rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .userRatingCount {
+      font-size: 1.2rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .userRatingCount {
+      font-size: 1.2rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .userRatingCount {
+      font-size: 1.3rem;
+      line-height: 1.5; } }
 
 .loadingSpinner {
   width: 20px; }

@@ -24,7 +24,7 @@
 
 .rowNumber {
     width: 52px;
-    font-size: $H2;
+    @include font-size($h2-font-sizes);
     color: $greyTextColor;
     font-weight: 100;
 }
@@ -43,14 +43,14 @@
 
 .appName {
     color: $darkTextPrimary;
-    font-size: $H3;
+    @include font-size($h3-font-sizes);
     font-weight: 100;
 }
 
 .appCatName {
     padding-top: 10px;
     color: $greyTextColor;
-    font-size: $H6;
+    @include font-size($h6-font-sizes);
     font-weight: 100;
 }
 
@@ -69,7 +69,7 @@
 
 .userRatingCount {
     color: $greyTextColor;
-    font-size: $P;
+    @include font-size($p-font-sizes);
     font-weight: 200;
 }
 

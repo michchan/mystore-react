@@ -17,6 +17,6 @@
     @extend .container;
 
     color: $greyTextColor;
-    font-size: $H4;
+    @include font-size($h4-font-sizes);
     font-weight: 100;
 }

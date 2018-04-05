@@ -1,3 +1,5 @@
-@import './_color.scss';
-@import './_font-size.scss';
-@import './_layout.scss';
+@import './config/_font-size.scss';
+@import './config/_color.scss';
+@import './config/_layout.scss';
+
+@import './mixins/_util.scss';

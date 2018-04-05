@@ -15,8 +15,25 @@
   border: 0;
   text-align: center;
   color: #333;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
   font-weight: 100; }
+  @media screen and (min-width: 480px) {
+    .input {
+      font-size: 1.4rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .input {
+      font-size: 1.5rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .input {
+      font-size: 1.6rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .input {
+      font-size: 1.7rem;
+      line-height: 1.5; } }
   .input::placeholder {
     color: #999;
     font-family: "FontAwesome", "Open Sans"; }
@@ -31,7 +48,24 @@
   justify-content: center;
   cursor: pointer;
   color: #999;
-  font-size: 2rem; }
+  font-size: 1.7rem;
+  line-height: 1.3; }
+  @media screen and (min-width: 480px) {
+    .buttonInsideInput, .clearButton, .searchButton {
+      font-size: 1.8rem;
+      line-height: 1.35; } }
+  @media screen and (min-width: 700px) {
+    .buttonInsideInput, .clearButton, .searchButton {
+      font-size: 1.9rem;
+      line-height: 1.4; } }
+  @media screen and (min-width: 1024px) {
+    .buttonInsideInput, .clearButton, .searchButton {
+      font-size: 2rem;
+      line-height: 1.45; } }
+  @media screen and (min-width: 1366px) {
+    .buttonInsideInput, .clearButton, .searchButton {
+      font-size: 2.1rem;
+      line-height: 1.5; } }
   .buttonInsideInput:hover, .clearButton:hover, .searchButton:hover {
     color: #333; }
 
