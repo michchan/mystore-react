@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import _ from 'lodash';
 
 import styles from './style.module.css';
 import { appStoreMetaFields } from '../../api';
@@ -23,7 +24,7 @@ export class AppHorizontalList extends Component {
 
     componentDidMount() {
         const { scrollOffset, setScrollWidth } = this.props;
-        if (this._listRef) {
+        if (_.isObject(this._listRef)) {
             this._listRef.scrollLeft = scrollOffset;
             setScrollWidth && setScrollWidth(this._listRef.scrollWidth);
         }
@@ -33,7 +34,7 @@ export class AppHorizontalList extends Component {
         const { scrollOffset, setScrollWidth, data } = this.props;
 
         if (nextProps.scrollOffset !== scrollOffset) {
-            this._listRef && (this._listRef.scrollLeft = nextProps.scrollOffset);
+            _.isObject(this._listRef) && (this._listRef.scrollLeft = nextProps.scrollOffset);
         }
     }
 
@@ -41,7 +42,8 @@ export class AppHorizontalList extends Component {
         const { data, setScrollWidth } = this.props;
 
         if (prevProps.data.length !== data.length) {
-            setScrollWidth && setScrollWidth(this._listRef.scrollWidth);
+            (_.isObject(this._listRef) && setScrollWidth) && 
+                setScrollWidth(this._listRef.scrollWidth);
         }
     }
 
