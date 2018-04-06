@@ -4,6 +4,7 @@ import styles from './style.module.css';
 import { AutoSizer, List, InfiniteLoader } from 'react-virtualized';
 import { AppListItem } from '../AppListItem';
 import { assetImages } from '../../assets';
+import { appFields } from '../../api';
 
 const _isRowLoaded = ({ index }, data) => {
     return !!data[index];
@@ -25,6 +26,8 @@ const _rowRenderer = (rowProps, props) => {
         isFiltered,
         scrollTop,
         lastScrollTop,
+        appearedItems,
+        addAppearedItem,
     } = props;
 
     const isExtrudedItem = index === data.length;  
@@ -41,6 +44,8 @@ const _rowRenderer = (rowProps, props) => {
 
     if (!item) return (null);
 
+    const isItemAppeared = !isNaN(appearedItems && appearedItems.find(i => i === index));
+
     return (
         <AppListItem 
             {...rowProps}
@@ -49,6 +54,8 @@ const _rowRenderer = (rowProps, props) => {
             appLookUpLoading={props.appLookUpLoading}
             scrollTop={scrollTop}
             lastScrollTop={lastScrollTop}
+            isAppeared={isItemAppeared}
+            addAppearedItem={addAppearedItem}
         />
     );
 }
@@ -130,6 +137,7 @@ const _getRowHeight = () => {
 
 AppList.defaultProps = {
     data: [],
+    appearedItems: [],
     headerHeight: 0,
     pageSize: 10,
     handleOnScroll: ()=>console.log('AppList: please pass handleOnScroll prop'),
@@ -137,8 +145,10 @@ AppList.defaultProps = {
 
 AppList.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    appearedItems: PropTypes.array,
     loadMoreRows: PropTypes.func.isRequired,
     handleOnScroll: PropTypes.func,
+    addAppearedItem: PropTypes.func.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
     isFiltered: PropTypes.bool.isRequired,

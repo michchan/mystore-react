@@ -4,7 +4,8 @@
   flex: 1;
   height: 100%;
   padding-left: 12px;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none !important; }
   @media screen and (min-width: 480px) {
     .container {
       padding-left: 14px; } }
@@ -291,19 +292,3 @@
   -o-transition: all 300ms ease-out;
   -webkit-transition: all 300ms ease-out;
   transition: all 300ms ease-out; }
-
-/* Classes for discarding transition */
-.noTransition {
-  opacity: 1; }
-
-.noTransition-enter {
-  opacity: 1; }
-
-.noTransition-enter-active {
-  opacity: 1; }
-
-.noTransition-exit {
-  opacity: 1; }
-
-.noTransition-exit-active {
-  opacity: 1; }

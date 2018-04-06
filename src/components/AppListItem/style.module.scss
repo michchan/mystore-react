@@ -71,6 +71,7 @@ $rating-loading-spinner-size: (
     height: 100%;
     @include get(padding-left, $container-paddings-left);
     cursor: pointer;
+    text-decoration: none !important;
 
     &:hover {
         background-color: $item-hover-color;
@@ -170,27 +171,4 @@ $rating-loading-spinner-size: (
     opacity: 0.01;
     @include translateY(50%);
     @include transition(all 300ms ease-out);
-}
-
-/* Classes for discarding transition */
-
-.noTransition {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-enter {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-enter-active {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-exit {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-exit-active {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
 }

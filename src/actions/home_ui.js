@@ -8,6 +8,7 @@ export const UPDATE_SCROLL_LEFT = pfx + 'UPDATE_SCROLL_LEFT';
 export const UPDATE_SCROLL_WIDTH = pfx + 'UPDATE_SCROLL_WIDTH';
 export const UPDATE_SEARCH_VALUE = pfx + 'UPDATE_SEARCH_VALUE';
 export const UPDATE_IS_SEARCH_FOCUSED = pfx + 'UPDATE_IS_SEARCH_FOCUSED';
+export const LIST_ITEM_APPEARED = pfx + 'LIST_ITEM_APPEARED';
 
 /* ========= Action Creators ========= */
 
@@ -22,9 +23,10 @@ export const updateScrollLeft = (scrollLeft) => ({
     scrollLeft,
 });
 
-export const updateScrollTop = (scrollTop) => ({
+export const updateScrollTop = (scrollTop, scrollHeight) => ({
     type: UPDATE_SCROLL_TOP,
-    scrollTop
+    scrollTop,
+    scrollHeight,
 });
 
 export const updateScrollWidth = (scrollWidth) => ({
@@ -42,12 +44,18 @@ export const updateIsSearchFocused = (isFocused = false) => ({
     isFocused
 });
 
+export const listItemAppeared = (index = 0) => ({
+    type: LIST_ITEM_APPEARED,
+    index,
+});
+
 export default {
     UPDATE_CLIENT_SIZE,
     UPDATE_SCROLL_TOP,
     UPDATE_SCROLL_LEFT,
     UPDATE_SCROLL_WIDTH,
     UPDATE_SEARCH_VALUE,
+    LIST_ITEM_APPEARED,
 
     updateClientSize,
     updateScrollTop,
@@ -55,4 +63,5 @@ export default {
     updateScrollWidth,
     updateSearchValue,
     updateIsSearchFocused,
+    listItemAppeared,
 };

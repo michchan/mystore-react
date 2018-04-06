@@ -16,7 +16,8 @@ import {
     updateScrollTop,
     updateSearchValue,
     updateIsSearchFocused,
-    updateFilterText
+    updateFilterText,
+    listItemAppeared
 } from '../actions';
 import { 
     topFreeAppsSelector, 
@@ -29,7 +30,10 @@ import {
     homeSearchValueSelector, 
     homeSearchFocusedSelector,
     homeScrollTopSelector,
-    homeLastScrollTopSelector
+    homeLastScrollTopSelector,
+    topFreeAppsResultSelector,
+    homeAppearedItemIdsSelector,
+    homeShowHeaderSelector
 } from '../selectors';
 
 class HomeContainer extends React.Component {
@@ -75,6 +79,7 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     topFreeApps: topFreeAppsSelector(state),
+    appearedItems: homeAppearedItemIdsSelector(state),
     topGrossingApps: topGrossingAppsSelector(state),
     topGrossingAppsMeta: topGrossingAppsMetaSelector(state),
     appLoading: homeAppLoadingSelector(state),
@@ -85,14 +90,15 @@ const mapStateToProps = (state, ownProps) => ({
     isSearchFocused: homeSearchFocusedSelector(state),
     scrollTop: homeScrollTopSelector(state),
     lastScrollTop: homeLastScrollTopSelector(state),
+    showHeader: homeShowHeaderSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     initFetch: () => dispatch({ type: START_INIT_FETCH_FLOW }),
     fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
-    scrollHorizontal: ({ clientHeight, scrollHeight, scrollTop }) => {
-        dispatch(updateScrollTop(scrollTop));
+    updateScrollTop: ({ clientHeight, scrollHeight, scrollTop }) => {
+        dispatch(updateScrollTop(scrollTop, scrollHeight));
     },
     handleOnHorizontalScroll: (e) => dispatch(updateScrollLeft(e.target.scrollLeft)),
     setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
@@ -105,6 +111,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(updateSearchValue(''));
         dispatch(updateFilterText(''));
     },
+    addAppearedItem: (id) => dispatch(listItemAppeared(id)),
 });
 
 export const HomeScene = connect(mapStateToProps, mapDispatchToProps)( HomeContainer );

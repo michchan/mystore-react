@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { 
     INIT_FETCH_STARTED, 
     INIT_FETCH_SUCCESS, 
@@ -13,7 +15,8 @@ import {
     UPDATE_SCROLL_TOP,
     UPDATE_SEARCH_VALUE,
     UPDATE_IS_SEARCH_FOCUSED,
-    UPDATE_FILTER_TEXT
+    UPDATE_FILTER_TEXT,
+    LIST_ITEM_APPEARED
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -25,14 +28,24 @@ const INITIAL_STATE = {
     scrollTop: 0,
     lastScrollTop: 0,
     scrollWidth: 0,
+    scrollHeight: 0,
     clientWidth: 0,
     clientHeight: 0,
     searchValue: '',
     isSearchFocused: false,
+    appearedItemIndices: [], // storing items' ids which has been animated appearing
+    showHeader: true,
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case LIST_ITEM_APPEARED: {
+            
+            return {
+                ...state,
+                appearedItemIndices: _.times(action.index + 1, i => i),
+            };
+        }
         case UPDATE_FILTER_TEXT: return { 
             ...state, 
             scrollTop: !action.text? state.lastScrollTop : 0, // when there is filter text, scroll to top, otherwise scroll to last scroll top value
@@ -47,13 +60,19 @@ export const homeUi = (state = INITIAL_STATE, action) => {
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
         case UPDATE_SCROLL_TOP: {
+            const THRESHOLD = 100;
             const hasReachedEndHorizontal = action.scrollTop * 2/3 >= state.scrollWidth - state.clientWidth;
+            const willReachEndVertical = action.scrollTop - THRESHOLD >= state.scrollHeight - state.clientHeight; 
+            const isScrollingDown = action.scrollTop > state.scrollTop;
+
             return {
                 ...state,
                 hasReachedEndHorizontal: hasReachedEndHorizontal,
                 scrollLeft: state.hasReachedEndHorizontal? state.scrollLeft : action.scrollTop * 2/3,
                 scrollTop: action.scrollTop,
+                scrollHeight: action.scrollHeight,
                 lastScrollTop: state.scrollTop,
+                showHeader: (isScrollingDown && hasReachedEndHorizontal && !willReachEndVertical)? false : true,
             };
         }
         case UPDATE_SCROLL_LEFT: {

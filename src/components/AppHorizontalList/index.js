@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 
 import styles from './style.module.css';
 import { appStoreMetaFields } from '../../api';
@@ -14,6 +15,7 @@ export class AppHorizontalList extends Component {
         data: PropTypes.arrayOf(PropTypes.object),
         meta: PropTypes.object,
         appLookUpLoading: PropTypes.bool.isRequired,
+        isShown: PropTypes.bool.isRequired,
         scrollOffset: PropTypes.number.isRequired,
         setScrollWidth: PropTypes.func.isRequired,
         handleOnScroll: PropTypes.func.isRequired,
@@ -51,11 +53,12 @@ export class AppHorizontalList extends Component {
             appLookUpLoading,
             scrollOffset,
             handleOnScroll,
+            isShown,
         } = props;
     
         const listTitle = meta[appStoreMetaFields.TITLE];
     
-        return (
+        const renderBody = (state) => (
             <div className={styles.container}>
                 <div className={styles.listTitle}>{ listTitle }</div>
                 <div ref={ref => this._listRef = ref} className={styles.listContainer} onScroll={handleOnScroll}>
@@ -71,11 +74,26 @@ export class AppHorizontalList extends Component {
                         ))
                     }
                     {
-                        !data.length && <div className={styles.noResultText}>No Result found.</div>
+                        !data.length && 
+                            <div className={styles.noResultContainer}>
+                                <div className={styles.noResultText}>No Result found.</div>
+                            </div>
                     }
                     <div className={styles.spacer}/>
                 </div>
             </div>
+        );
+
+        return (
+            <CSSTransition
+                in={isShown}
+                timeout={50}
+                classNames={styles.containerTransition}
+                mountOnEnter
+                unmountOnExit
+            >
+                { renderBody }
+            </CSSTransition>
         );
     }
 };

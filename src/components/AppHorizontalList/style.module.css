@@ -5,7 +5,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   background-color: #fff;
-  border-top: 0.8px solid #EAEAEA;
   border-bottom: 1.2px solid #E4E4E4; }
   .container .listTitle {
     color: #333;
@@ -79,26 +78,72 @@
     @media screen and (min-width: 1366px) {
       .container .spacer {
         width: 20px; } }
-  .container .noResultText {
+  .container .noResultContainer {
+    display: flex;
+    flex: 1;
     width: 100vw;
-    color: #999;
-    font-size: 1.5rem;
-    line-height: 1.3;
-    font-weight: 100;
-    text-align: center; }
-    @media screen and (min-width: 480px) {
-      .container .noResultText {
-        font-size: 1.6rem;
-        line-height: 1.35; } }
-    @media screen and (min-width: 700px) {
-      .container .noResultText {
-        font-size: 1.7rem;
-        line-height: 1.4; } }
-    @media screen and (min-width: 1024px) {
-      .container .noResultText {
-        font-size: 1.8rem;
-        line-height: 1.45; } }
-    @media screen and (min-width: 1366px) {
-      .container .noResultText {
-        font-size: 1.9rem;
-        line-height: 1.5; } }
+    height: 100%;
+    align-items: center;
+    justify-content: center; }
+    .container .noResultContainer .noResultText {
+      color: #999;
+      font-size: 1.5rem;
+      line-height: 1.3;
+      font-weight: 100;
+      text-align: center; }
+      @media screen and (min-width: 480px) {
+        .container .noResultContainer .noResultText {
+          font-size: 1.6rem;
+          line-height: 1.35; } }
+      @media screen and (min-width: 700px) {
+        .container .noResultContainer .noResultText {
+          font-size: 1.7rem;
+          line-height: 1.4; } }
+      @media screen and (min-width: 1024px) {
+        .container .noResultContainer .noResultText {
+          font-size: 1.8rem;
+          line-height: 1.45; } }
+      @media screen and (min-width: 1366px) {
+        .container .noResultContainer .noResultText {
+          font-size: 1.9rem;
+          line-height: 1.5; } }
+
+/* Classes for react-transition group css transition */
+.containerTransition {
+  opacity: 1; }
+
+.containerTransition-enter {
+  opacity: 0.01;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%); }
+
+.containerTransition-enter-active {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -webkit-transition: all 300ms ease-out;
+  transition: all 300ms ease-out; }
+
+.containerTransition-exit {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%); }
+
+.containerTransition-exit-active {
+  opacity: 0.01;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -webkit-transition: all 300ms ease-out;
+  transition: all 300ms ease-out; }
