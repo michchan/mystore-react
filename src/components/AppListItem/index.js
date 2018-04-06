@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import styles from './style.module.css';
 import { appFields as fields } from '../../api';
 import { assetImages } from '../../assets';
+import { isMobileAgent } from '../../lib';
 
 export class AppListItem extends Component {
     static defaultProps = {
@@ -40,6 +41,8 @@ export class AppListItem extends Component {
             addAppearedItem,
             ...passedProps
         } = props;
+
+        const isMobile = isMobileAgent();
 
         const isScrollingDown = scrollTop > lastScrollTop;
         const rowCount = (parent.props && parent.props.rowCount) || 0;
@@ -94,11 +97,11 @@ export class AppListItem extends Component {
         )
 
         return (
-            isAppeared? 
+            isAppeared || isMobile? 
                 renderBody() :
                 <CSSTransition
                     in={isVisible}
-                    timeout={50}
+                    timeout={100}
                     classNames={styles.containerTransition}
                     onExited={() => addAppearedItem(index) }
                     mountOnEnter
