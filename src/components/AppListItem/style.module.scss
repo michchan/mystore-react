@@ -171,26 +171,3 @@ $rating-loading-spinner-size: (
     @include translateY(50%);
     @include transition(all 300ms ease-out);
 }
-
-/* Classes for discarding transition */
-
-.noTransition {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-enter {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-enter-active {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-exit {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}
-.noTransition-exit-active {
-    opacity: 1;
-    // Placeholder class for determining transition class name (after modulized)
-}

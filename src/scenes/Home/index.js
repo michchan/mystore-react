@@ -7,6 +7,7 @@ import { assetImages } from '../../assets';
 export const HomeScene = (props = {}) => {
     const {
         topFreeApps,
+        topFreeAppsResult,
         topGrossingApps,
         topGrossingAppsMeta,
         fetchTopFreeApps,
@@ -26,6 +27,8 @@ export const HomeScene = (props = {}) => {
         isSearchFocused,
         scrollTop,
         lastScrollTop,
+        appearedItems,
+        addAppearedItem,
     } = props;
 
     if (appLoading)
@@ -65,6 +68,8 @@ export const HomeScene = (props = {}) => {
                     isFiltered={!!searchValue}
                     scrollTop={scrollTop}
                     lastScrollTop={lastScrollTop}
+                    appearedItems={appearedItems}
+                    addAppearedItem={addAppearedItem}
                 />
             </div>
         </div>
@@ -78,6 +83,7 @@ HomeScene.defaultProps = {
 };
 HomeScene.propTypes = {
     topFreeApps: PropTypes.arrayOf(PropTypes.object),
+    appearedItems: PropTypes.array,
     topGrossingApps: PropTypes.arrayOf(PropTypes.object),
     topGrossingAppsMeta: PropTypes.object,
     fetchTopFreeApps: PropTypes.func.isRequired,
@@ -89,6 +95,7 @@ HomeScene.propTypes = {
     onSearchFocus: PropTypes.func.isRequired,
     onSearchBlur: PropTypes.func.isRequired,
     clearSearchValue: PropTypes.func.isRequired,
+    addAppearedItem: PropTypes.func.isRequired,
     appLoading: PropTypes.bool.isRequired,
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,

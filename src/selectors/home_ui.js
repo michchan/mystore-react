@@ -7,3 +7,4 @@ export const homeSearchValueSelector = state => state.homeUi.searchValue;
 export const homeSearchFocusedSelector = state => state.homeUi.isSearchFocused;
 export const homeScrollTopSelector = state => state.homeUi.scrollTop;
 export const homeLastScrollTopSelector = state => state.homeUi.lastScrollTop;
+export const homeAppearedItemIdsSelector = state => state.homeUi.appearedItemIndices;

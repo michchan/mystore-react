@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { 
     INIT_FETCH_STARTED, 
     INIT_FETCH_SUCCESS, 
@@ -13,7 +15,8 @@ import {
     UPDATE_SCROLL_TOP,
     UPDATE_SEARCH_VALUE,
     UPDATE_IS_SEARCH_FOCUSED,
-    UPDATE_FILTER_TEXT
+    UPDATE_FILTER_TEXT,
+    LIST_ITEM_APPEARED
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -29,10 +32,18 @@ const INITIAL_STATE = {
     clientHeight: 0,
     searchValue: '',
     isSearchFocused: false,
+    appearedItemIndices: [], // storing items' ids which has been animated appearing
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case LIST_ITEM_APPEARED: {
+            
+            return {
+                ...state,
+                appearedItemIndices: _.times(action.index + 1, i => i),
+            };
+        }
         case UPDATE_FILTER_TEXT: return { 
             ...state, 
             scrollTop: !action.text? state.lastScrollTop : 0, // when there is filter text, scroll to top, otherwise scroll to last scroll top value
