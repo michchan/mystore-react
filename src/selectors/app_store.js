@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { createSelector } from 'reselect';
 import { filterTermsSelector } from './filter';
 import { appFields } from '../api';
@@ -15,18 +17,20 @@ const getAll = (entities, result, filterTerms) => {
     return mappedResult.filter(entity => {
         for (const term of filterTerms) {
             // filter by app name
-            if (findStringIgnoreCase(entity[appFields.NAME], term))
+            if (findStringIgnoreCase(entity[appFields.NAME] || '', term))
                 return true;
             // filter by author
-            if (findStringIgnoreCase(entity[appFields.ARTIST_LABEL], term))
+            if (findStringIgnoreCase(entity[appFields.ARTIST_LABEL] || '', term))
                 return true;
             // filter by genres
-            for (const genre of entity[appFields.GENRES]) {
-                if (findStringIgnoreCase(genre, term)) 
-                    return true;
+            if (_.isArray(entity[appFields.GENRES])) {
+                for (const genre of entity[appFields.GENRES]) {
+                    if (findStringIgnoreCase(genre, term)) 
+                        return true;
+                }
             }
             // filter by summary
-            if (findStringIgnoreCase(entity[appFields.SUMMARY], term))
+            if (findStringIgnoreCase(entity[appFields.SUMMARY] || '', term))
                 return true;
         }
 
