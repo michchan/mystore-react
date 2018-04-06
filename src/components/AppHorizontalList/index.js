@@ -71,7 +71,10 @@ export class AppHorizontalList extends Component {
                         ))
                     }
                     {
-                        !data.length && <div className={styles.noResultText}>No Result found.</div>
+                        !data.length && 
+                            <div className={styles.noResultContainer}>
+                                <div className={styles.noResultText}>No Result found.</div>
+                            </div>
                     }
                     <div className={styles.spacer}/>
                 </div>

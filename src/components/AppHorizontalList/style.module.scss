@@ -58,12 +58,20 @@ $list-spacer-width: (
         flex: 0 0 auto;
         @include get(width, $list-spacer-width);
     }
-    
-    .noResultText {
+
+    .noResultContainer {
+        display: flex;
+        flex: 1;
         width: 100vw;
-        color: $grey-text-color;
-        @include font-size($h4-font-sizes);
-        font-weight: 100;
-        text-align: center;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .noResultText {
+            color: $grey-text-color;
+            @include font-size($h4-font-sizes);
+            font-weight: 100;
+            text-align: center;
+        }
     }
 }
