@@ -23,9 +23,10 @@ export const updateScrollLeft = (scrollLeft) => ({
     scrollLeft,
 });
 
-export const updateScrollTop = (scrollTop) => ({
+export const updateScrollTop = (scrollTop, scrollHeight) => ({
     type: UPDATE_SCROLL_TOP,
-    scrollTop
+    scrollTop,
+    scrollHeight,
 });
 
 export const updateScrollWidth = (scrollWidth) => ({

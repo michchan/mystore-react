@@ -75,3 +75,32 @@ $list-spacer-width: (
         }
     }
 }
+
+/* Classes for react-transition group css transition */
+
+.containerTransition {
+    opacity: 1;
+    // Placeholder class for determining transition class name (after modulized)
+}
+
+.containerTransition-enter {
+    opacity: 0.01;
+    @include translateY(-100%);
+}
+
+.containerTransition-enter-active {
+    opacity: 1;
+    @include translateY(0%);
+    @include transition(all 300ms ease-out);
+}
+
+.containerTransition-exit {
+    opacity: 1;
+    @include translateY(0%);
+}
+
+.containerTransition-exit-active {
+    opacity: 0.01;
+    @include translateY(-100%);
+    @include transition(all 300ms ease-out);
+}

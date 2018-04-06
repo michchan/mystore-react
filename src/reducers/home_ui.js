@@ -28,11 +28,13 @@ const INITIAL_STATE = {
     scrollTop: 0,
     lastScrollTop: 0,
     scrollWidth: 0,
+    scrollHeight: 0,
     clientWidth: 0,
     clientHeight: 0,
     searchValue: '',
     isSearchFocused: false,
     appearedItemIndices: [], // storing items' ids which has been animated appearing
+    showHeader: true,
 };
 
 export const homeUi = (state = INITIAL_STATE, action) => {
@@ -59,12 +61,18 @@ export const homeUi = (state = INITIAL_STATE, action) => {
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
         case UPDATE_SCROLL_TOP: {
             const hasReachedEndHorizontal = action.scrollTop * 2/3 >= state.scrollWidth - state.clientWidth;
+            const willReachEndVertical = action.scrollTop - 100 >= state.scrollHeight - state.clientHeight; 
+            // Here 200 is a threshold for reaching end
+            const isScrollingDown = action.scrollTop > state.scrollTop;
+
             return {
                 ...state,
                 hasReachedEndHorizontal: hasReachedEndHorizontal,
                 scrollLeft: state.hasReachedEndHorizontal? state.scrollLeft : action.scrollTop * 2/3,
                 scrollTop: action.scrollTop,
+                scrollHeight: action.scrollHeight,
                 lastScrollTop: state.scrollTop,
+                showHeader: (isScrollingDown && hasReachedEndHorizontal && !willReachEndVertical)? false : true,
             };
         }
         case UPDATE_SCROLL_LEFT: {

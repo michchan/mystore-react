@@ -15,7 +15,7 @@ export const HomeScene = (props = {}) => {
         appLoading,
         appLookUpLoading,
         loadingMore,
-        scrollHorizontal,
+        updateScrollTop,
         setScrollWidth,
         handleOnHorizontalScroll,
         scrollLeft,
@@ -29,6 +29,7 @@ export const HomeScene = (props = {}) => {
         lastScrollTop,
         appearedItems,
         addAppearedItem,
+        showHeader,
     } = props;
 
     if (appLoading)
@@ -48,15 +49,19 @@ export const HomeScene = (props = {}) => {
                 onClearText={clearSearchValue}
                 isFocused={isSearchFocused}
             />
-
-            <AppHorizontalList
-                data={topGrossingApps}
-                appLookUpLoading={appLookUpLoading}
-                meta={topGrossingAppsMeta}
-                scrollOffset={scrollLeft}
-                setScrollWidth={setScrollWidth}
-                handleOnScroll={handleOnHorizontalScroll}
-            />
+        
+            {
+                // !!showHeader &&
+                <AppHorizontalList
+                    data={topGrossingApps}
+                    appLookUpLoading={appLookUpLoading}
+                    meta={topGrossingAppsMeta}
+                    scrollOffset={scrollLeft}
+                    setScrollWidth={setScrollWidth}
+                    handleOnScroll={handleOnHorizontalScroll}
+                    isShown={showHeader}
+                />
+            }
 
             <div className={styles.listContainer}>
                 <AppList 
@@ -64,7 +69,7 @@ export const HomeScene = (props = {}) => {
                     loadMoreRows={fetchTopFreeApps} 
                     appLookUpLoading={appLookUpLoading}
                     loadingMore={loadingMore}
-                    handleOnScroll={scrollHorizontal}
+                    handleOnScroll={updateScrollTop}
                     isFiltered={!!searchValue}
                     scrollTop={scrollTop}
                     lastScrollTop={lastScrollTop}
@@ -88,7 +93,7 @@ HomeScene.propTypes = {
     topGrossingAppsMeta: PropTypes.object,
     fetchTopFreeApps: PropTypes.func.isRequired,
     fetchTopGrossingApps: PropTypes.func.isRequired,
-    scrollHorizontal: PropTypes.func.isRequired,
+    updateScrollTop: PropTypes.func.isRequired,
     setScrollWidth: PropTypes.func.isRequired,
     handleOnHorizontalScroll: PropTypes.func.isRequired,
     onSearchValueChange: PropTypes.func.isRequired,
@@ -100,6 +105,7 @@ HomeScene.propTypes = {
     appLookUpLoading: PropTypes.bool.isRequired,
     loadingMore: PropTypes.bool.isRequired,
     isSearchFocused: PropTypes.bool.isRequired,
+    showHeader: PropTypes.bool.isRequired,
     scrollLeft: PropTypes.number.isRequired,
     searchValue: PropTypes.string.isRequired,
     scrollTop: PropTypes.number.isRequired,

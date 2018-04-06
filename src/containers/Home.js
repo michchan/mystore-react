@@ -32,7 +32,8 @@ import {
     homeScrollTopSelector,
     homeLastScrollTopSelector,
     topFreeAppsResultSelector,
-    homeAppearedItemIdsSelector
+    homeAppearedItemIdsSelector,
+    homeShowHeaderSelector
 } from '../selectors';
 
 class HomeContainer extends React.Component {
@@ -89,14 +90,15 @@ const mapStateToProps = (state, ownProps) => ({
     isSearchFocused: homeSearchFocusedSelector(state),
     scrollTop: homeScrollTopSelector(state),
     lastScrollTop: homeLastScrollTopSelector(state),
+    showHeader: homeShowHeaderSelector(state),
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     initFetch: () => dispatch({ type: START_INIT_FETCH_FLOW }),
     fetchTopFreeApps: () => dispatch(startFetchingTopFreeAppsFlow(10)),
     fetchTopGrossingApps: () => dispatch(startFetchingTopGrossingAppsFlow(10)),
-    scrollHorizontal: ({ clientHeight, scrollHeight, scrollTop }) => {
-        dispatch(updateScrollTop(scrollTop));
+    updateScrollTop: ({ clientHeight, scrollHeight, scrollTop }) => {
+        dispatch(updateScrollTop(scrollTop, scrollHeight));
     },
     handleOnHorizontalScroll: (e) => dispatch(updateScrollLeft(e.target.scrollLeft)),
     setScrollWidth: (scrollWidth) => dispatch(updateScrollWidth(scrollWidth)),
