@@ -60,7 +60,7 @@ export const homeUi = (state = INITIAL_STATE, action) => {
         case UPDATE_CLIENT_SIZE: return { ...state, clientWidth: action.width, clientHeight: action.height };
         case UPDATE_SCROLL_WIDTH: return { ...state, scrollWidth: action.scrollWidth };
         case UPDATE_SCROLL_TOP: {
-            const THRESHOLD = 100;
+            const THRESHOLD = 50;
             const hasReachedEndHorizontal = action.scrollTop * 2/3 >= state.scrollWidth - state.clientWidth;
             const willReachEndVertical = action.scrollTop - THRESHOLD >= state.scrollHeight - state.clientHeight; 
             const isScrollingDown = action.scrollTop > state.scrollTop;
@@ -72,7 +72,10 @@ export const homeUi = (state = INITIAL_STATE, action) => {
                 scrollTop: action.scrollTop,
                 scrollHeight: action.scrollHeight,
                 lastScrollTop: state.scrollTop,
-                showHeader: (isScrollingDown && hasReachedEndHorizontal && !willReachEndVertical)? false : true,
+                showHeader: (
+                    isScrollingDown && hasReachedEndHorizontal 
+                    && !(state.showHeader && willReachEndVertical)
+                )? false : true,
             };
         }
         case UPDATE_SCROLL_LEFT: {
