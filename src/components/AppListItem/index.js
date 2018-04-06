@@ -57,9 +57,19 @@ export class AppListItem extends Component {
         const appIconBorderRadius = isEvenRow ? '50%' : '25%'; // App icon should be cropped round for odd rows and circle for even rows
         const userRating = data[fields.AVG_USER_RATING];
         const userRatingCount = data[fields.USER_RATING_COUNT];
+        const appStoreLinkType = data[fields.LINK_TYPE];
+        const appStoreLinkRel = data[fields.LINK_REL];
+        const appStoreLinkURL = data[fields.LINK_URL];
 
         const renderBody = state => (
-            <div {...passedProps} className={styles.container}>
+            <a 
+                {...passedProps} 
+                href={appStoreLinkURL}
+                rel={appStoreLinkRel}
+                type={appStoreLinkType}
+                target={'blank'}
+                className={styles.container}
+            >
                 <div className={styles.innerContainer}>
                     <div className={styles.rowNumber}>{ rowNumber }</div>
     
@@ -93,7 +103,7 @@ export class AppListItem extends Component {
                         }
                     </div>
                 </div>
-            </div>
+            </a>
         )
 
         return (

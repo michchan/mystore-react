@@ -13,13 +13,22 @@ export const AppHorizontalListItem = (props = {}) => {
     const appName = data[fields.NAME];
     const appCatName = data[fields.CATEGORY_LABEL];
     const appIconSrc = data[fields.ICON_100];
+    const appStoreLinkType = data[fields.LINK_TYPE];
+    const appStoreLinkRel = data[fields.LINK_REL];
+    const appStoreLinkURL = data[fields.LINK_URL];
 
     return (
-        <div className={styles.container}>
+        <a 
+            href={appStoreLinkURL}
+            rel={appStoreLinkRel}
+            type={appStoreLinkType}
+            target={'blank'} 
+            className={styles.container}
+        >
             <img src={appIconSrc} alt="icon" className={styles.appIcon}/>
             <div className={styles.appName}>{ appName }</div>
             <div className={styles.appCatName}>{ appCatName }</div>
-        </div>
+        </a>
     );
 };
 

@@ -8,7 +8,8 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none !important; }
   @media screen and (min-width: 480px) {
     .container {
       width: 110px; } }

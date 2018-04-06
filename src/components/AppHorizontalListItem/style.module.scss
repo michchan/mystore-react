@@ -51,6 +51,7 @@ $app-cat-name-paddings: (
     justify-content: flex-start;
     background-color: #fff;
     cursor: pointer;
+    text-decoration: none !important;
 
     &:hover {
         background-color: $item-hover-color;

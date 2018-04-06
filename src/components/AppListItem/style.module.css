@@ -4,7 +4,8 @@
   flex: 1;
   height: 100%;
   padding-left: 12px;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none !important; }
   @media screen and (min-width: 480px) {
     .container {
       padding-left: 14px; } }

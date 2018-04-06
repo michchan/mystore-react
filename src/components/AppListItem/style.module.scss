@@ -71,6 +71,7 @@ $rating-loading-spinner-size: (
     height: 100%;
     @include get(padding-left, $container-paddings-left);
     cursor: pointer;
+    text-decoration: none !important;
 
     &:hover {
         background-color: $item-hover-color;
