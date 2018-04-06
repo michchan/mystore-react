@@ -40,6 +40,7 @@ $clear-button-sizes: (
     align-items: center;
     justify-content: center;
     background-color: #fff;
+    border-bottom: $border-width-bold solid $border-color-accent;
     z-index: 10;
 
     .input {
